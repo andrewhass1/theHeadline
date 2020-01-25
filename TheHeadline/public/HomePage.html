@@ -26,27 +26,36 @@
         font-size: 18px;
         font-family: "Avenir-Light";
     }
+    @media screen and (min-width: 701px) {
+        div.widthAdjustment {
+            width: 680px;
+        }
+    }
+    @media screen and (max-width: 700px) {
+        div.widthAdjustment {
+            width: 95%;
+        }
+    }
+
 
     #header {
-        font-size: 55px;
-        font-family: "Avenir-Black";
-        text-align: center;
+        font-size: 33px;
+        font-family: "Avenir-Heavy";
+        text-align: left;
         padding-top: 10px;
 
     }
 
     #postDetailText {
         font-size: 17px;
-        font-family: "Avenir-Medium";
-        text-align: center;
-        color: #797979;
-        margin-bottom: 0px;
+        font-family: "Avenir-Heavy";
+        text-align: left;
+        margin-top: -10px;
 
     }
 
     #social {
         text-align: center;
-
     }
 
     #logo {
@@ -124,9 +133,7 @@
         background-color: black;
     }
 
-    .navbar-custom2 {
-        background-image: url("assets/navBarColor.png");
-    }
+
 
     #item3 {
         font-family: "Avenir-Medium";
@@ -162,40 +169,22 @@
     </ul>
     </nav>
 
-    <img src="assets/coverart.png" class="img-fluid" alt="coverart">
 
-
-    <div id="header" class="container-lg w-75 mt-5">
+    <div id="header" class="container-lg mt-5 widthAdjustment">
       <p id="aTitle"></p>
+      <p id="postDetailText">By Henry Aleaxander Macht · 10,242 views</p>
     </div>
 
-    <p id="postDetailText">By <a href="#">Henry Aleaxander Macht</a> · 10,242 views</p>
-
-    <div class="container-lg w-50 text-center">
-      <div id="social" class="btn-group" role="group" aria-label="Basic example">
-          <button id="socialBtn" class="btn btn-default">
-              <img src="assets/twitter-logo-24.png" width="20" />
-          </button>
-          <button id="socialBtn" class="btn btn-default">
-              <img src="assets/facebook-circle-logo-24.png" width="20" />
-          </button>
-          <button id="socialBtn" class="btn btn-default">
-              <img src="assets/bookmark-regular-24.png" width="20" />
-          </button>
-      </div>
-    </div>
-
-
-    <div id="articleText" class="container-lg w-50 mt-5">
+    <div id="articleText" class="container-lg mt-4 widthAdjustment">
       <p id="aText"></p>
     </div>
 
 
-    <div id="break" class="container-lg w-50 mt-5">
+    <div id="break" class="container-lg mt-5 widthAdjustment">
       <hr>
     </div>
 
-    <div class="container-lg w-50 mt-5">
+    <div class="container-lg mt-5 widthAdjustment">
       <p id="author" class="footnote"></p>
       <p id="bio" class="footnote"></p>
       <p id="info">This piece will only be up for a limited time. If you wish to read it later, bookmark it or share it with friends and family. If you want to see your own article on the front page <a href="#">create</a> one and post it.</p>
@@ -229,28 +218,7 @@
 
     <footer id="footer">
 
-      <div class="container-lg mt-5">
-          <p id="footItem1">Articles from real people</p>
-          <p id="footItem2">Discover articles that people write. People know that what they say will be herd, so they put there heart into every post.</p>
-          <hr>
-      </div>
-      <div id="break2" class="container-lg">
-          <hr>
-      </div>
-      <div class="container-lg">
-          <nav id="navBar" class="navbar navbar-custom">
-            <a id="logo2" class="navbar-brand" href="#">The Headline</a>
-            <ul class="nav justify-content-end">
-              <li class="nav-item navItem-custom">
-                <a id="item3" class="nav-link active" href="#">About</a>
-              </li>
-              <li class="nav-item">
-                <a id="item3" class="nav-link" href="#">Legal</a>
-              </li>
-            </ul>
-          </nav>
-      </div>
-
+        <img src="assets/footerart.png" class="img-fluid" alt="coverart">
 
     </footer>
 
