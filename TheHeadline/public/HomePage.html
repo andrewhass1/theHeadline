@@ -30,6 +30,7 @@
         div.widthAdjustment {
             width: 680px;
         }
+
     }
     @media screen and (max-width: 700px) {
         div.widthAdjustment {
@@ -99,7 +100,7 @@
 
     #footer {
         background-color: black;
-        height: 210px;
+        height: 230px;
     }
 
     #footItem1 {
@@ -148,6 +149,31 @@
     .navBar {
         margin: 0;
     }
+    .headerImg {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 96%;
+    }
+
+    .fake-alt {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+    .footerContainer {
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+    .footerContainer2 {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 
 
 
@@ -169,6 +195,15 @@
     </ul>
     </nav>
 
+    <img src="assets/coverart.png" class="img-fluid headerImg" alt="coverart">
+
+
+
+
+
+
+
+
 
     <div id="header" class="container-lg mt-5 widthAdjustment">
       <p id="aTitle"></p>
@@ -188,9 +223,6 @@
       <p id="author" class="footnote"></p>
       <p id="bio" class="footnote"></p>
       <p id="info">This piece will only be up for a limited time. If you wish to read it later, bookmark it or share it with friends and family. If you want to see your own article on the front page <a href="#">create</a> one and post it.</p>
-    </div>
-
-    <div class="container-lg w-50 ">
       <div id="social" class="btn-group" role="group" aria-label="Basic example">
           <button id="socialBtn" class="btn btn-default">
               <img src="assets/twitter-logo-24.png" width="20" />
@@ -218,7 +250,30 @@
 
     <footer id="footer">
 
-        <img src="assets/footerart.png" class="img-fluid" alt="coverart">
+      <div class="footerContainer mt-5">
+          <p id="footItem1">Articles from real people</p>
+          <p id="footItem2">Discover articles that people write. People know that what they say will be herd, so they put there heart into every post.</p>
+
+          <hr id="break2">
+      </div>
+
+      <div class="footerContainer2">
+          <nav id="navBar" class="navbar navbar-custom">
+            <a id="logo2" class="navbar-brand" href="#">The Headline</a>
+            <ul class="nav justify-content-end">
+              <li class="nav-item navItem-custom">
+                <a id="item3" class="nav-link active" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a id="item3" class="nav-link" href="#">Legal</a>
+              </li>
+            </ul>
+          </nav>
+      </div>
+
+
+
+
 
     </footer>
 
