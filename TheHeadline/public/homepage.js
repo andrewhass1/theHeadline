@@ -12,6 +12,13 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
+function signout(){
+    firebase.auth().signOut().then(function() {
+        location.href = 'singInPage.html';
+    }).catch(function(error) {
+      // An error happened.
+    });
+  }
 var db = firebase.firestore();
 var postRef = db.collection("posts");
 
