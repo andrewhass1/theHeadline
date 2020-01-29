@@ -11,6 +11,13 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
+firebase.auth().onAuthStateChanged(function(user){
+  if(user) {
+    location.href = 'HomePage.html'; //After successful login, user will be redirected to home.html
+  } else{
+        
+  }
+});
 function login() {
     var email = document.getElementById("email").value;
     var pass = document.getElementById("password").value;
@@ -20,11 +27,4 @@ function login() {
 
         window.alert("Error : " + errorMessage);
     });
-    firebase.auth().onAuthStateChanged(function(user){
-        if(user) {
-          location.href = 'HomePage.html'; //After successful login, user will be redirected to home.html
-        } else{
-              
-        }
-      });
 }
