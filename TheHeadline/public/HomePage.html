@@ -185,8 +185,8 @@
     }
     .footerContainer1 {
         position: relative;
-        background-color: #191919;
-        height: 300px;
+        background-color: #FFCCAD;
+        height: 600px;
         width: 100%;
     }
     #createItem1 {
@@ -224,6 +224,17 @@
         top: 50%; left: 50%;
         transform: translate(-50%,-50%);
     }
+    .headerContainer {
+        position: relative;
+        background-color: #F8F9FA;
+        height: 350px;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+    .coverart {
+        height: 250px;
+        width: auto;
+    }
 
 
 
@@ -235,7 +246,7 @@
 
     <!-- As a link -->
     <nav class="navbar navbar-custom2">
-        <a id="logo" class="navbar-brand brand" href="#">The Headline</a>
+        <a id="logo" class="navbar-brand brand" href="HomePage.html">The Headline</a>
         <ul class="nav justify-content-end">
             <li class="nav-item">
                 <a id="navitem1" class="nav-link active item1" onclick="navButton()" style = "cursor: pointer;">Sign in</a>
@@ -253,7 +264,11 @@
         </ul>
     </nav>
 
-    <img src="assets/coverart.png" class="img-fluid headerImg" alt="coverart">
+    <div class="headerContainer">
+        <div class="center">
+            <img src="assets/coverart.png" class="coverart" alt="coverart" >
+        </div>
+    </div>
 
     <!--<div class="dash"></div>-->
 
@@ -302,6 +317,7 @@
 
     <div class="footerContainer1 mt-5">
         <div class="center">
+            <img src="assets/footerart.png" class="img-fluid headerImg" alt="coverart">
             <p id="createItem1">Let the world hear you for just $1</p>
             <p id="createItem2">Its easy to create your own piece</p>
             <form>
@@ -313,7 +329,7 @@
 
     <footer id="footer">
 
-      <div class="footerContainer mt-1">
+      <div class="footerContainer mt-2">
           <p id="footItem1">Articles from real people</p>
           <p id="footItem2">Discover articles that people write. People know that what they say will be herd, so they put there heart into every post.</p>
 

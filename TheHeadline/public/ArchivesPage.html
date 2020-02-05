@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
+        <meta charset="utf-8">
+        <title>The Headline</title>
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Girassol&display=swap" rel="stylesheet">
-        <meta charset="utf-8">
-        <title></title>
     </head>
     <style>
+
+
         .brand {
             font-family: 'Girassol', cursive;
             color: black;
@@ -14,34 +17,18 @@
             left: 50%;
             margin-left: -50px !important;  /* 50% of your logo width */
             display: block;
+            margin-top: 20px;
         }
-        .item1 {
-            font-family: "Avenir-Heavy";
-            color: black;
-            font-size: 13px;
-        }
-        #username {
+        #header {
             font-size: 33px;
             font-family: "Avenir-Heavy";
-            text-align: center;
+            text-align: left;
+            padding-top: 10px;
+
         }
-        #username {
-            font-size: 45px;
-            font-family: "Avenir-Black";
-            text-align: center;
-        }
-        #bio {
-            font-size: 18px;
-            font-family: "Avenir-Medium";
-            text-align: center;
-            color: #9B9B9B;
-            margin-top: -12px;
-        }
-        .center {
-            text-align:center;
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%,-50%);
+        #subHeader {
+            color: #FAA785;
+
         }
         #whiteout {
             position: fixed;
@@ -56,24 +43,34 @@
             display: flex;
             margin: 0 auto;
         }
+
+
+
     </style>
     <body>
-
         <nav id="navBar" class="navbar navbar-custom2">
-          <a id="logo" class="navbar-brand brand" href="HomePage.html">The Headline</a>
-          <ul class="nav justify-content-end">
-              <li class="nav-item">
-                  <a id="singoutbutton" class="nav-link active item1" onclick="signout()" style = "cursor:pointer">Sign out</a>
-              </li>
-              <li class="nav-item">
-                  <a id="navitem2" class="nav-link item1" href="ArchivesPage.html" style = "cursor: pointer;">The Archives</a>
-              </li>
-
-          </ul>
+          <a id="logo" class="navbar-brand brand" href="HomePage.html">The Archives</a>
         </nav>
-        <div class="container center">
-            <p id="username"></p>
-            <p id="bio"></p>
+
+        <div class="container mt-5">
+            <p id="header"><span id="subHeader">We dont want words to be lost.</span><br> But we cant hold on to everything, so here are the past 50 posts</p>
+        </div>
+
+
+
+        <div class="container mt-5">
+            <table id="archiveTable"class="table table-sm table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Author</th>
+                  <th scope="col">Title</th>
+                </tr>
+              </thead>
+              <tbody style="cursor:pointer">
+              </tbody>
+            </table>
+
         </div>
 
         <div id="whiteout">
@@ -81,8 +78,6 @@
               <span class="sr-only">Loading...</span>
             </div>
         </div>
-
-
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -93,16 +88,15 @@
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
         <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-analytics.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-functions.js"></script>
 
         <script src="configure.js"></script>
-        <script src="AccountPage.js"></script>
-
-
-
+        <script src="Archives.js"></script>
 
     </body>
 </html>

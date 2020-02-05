@@ -20,7 +20,8 @@ function register() {
 
     firebase.auth().onAuthStateChanged(function(user){
         if (user) {
-            console.log("Hello");
+            var loadingCover = document.getElementById("whiteout");
+            loadingCover.style.display = "flex";
             var db = firebase.firestore();
             var usersName = document.getElementById('name').value;
             db.collection("users").add({
