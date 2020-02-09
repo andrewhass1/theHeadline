@@ -21,3 +21,14 @@ exports.createPost = functions.firestore
       // perform desired operations ...
       console.log(title);
     });
+
+const admin = require("firebase-admin");
+admin.initializeApp();
+    
+exports.hitCounter = functions.https.onRequest((req, res) => {
+    var counterRef = admin.database().ref("hit_counter");
+    return counterRef
+        .transaction(current => {
+        return (current || 0) + 1;
+        })
+  });

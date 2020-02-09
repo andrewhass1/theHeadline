@@ -1,5 +1,7 @@
 var db = firebase.firestore();
-
+function title(title){
+    location.href = 'HomePage.html';
+}   
     db.collection("posts").where("status", "==", "POSTED").orderBy("time", "desc").limit(50)
         .get()
         .then(function(querySnapshot) {
@@ -12,16 +14,21 @@ var db = firebase.firestore();
                 var tr = document.createElement("tr");
                 var td1 = document.createElement("td");
                 var td2 = document.createElement("td");
-                var td3 = document.createElement("td");
-
+                var td3 = document.createElement("a");
+                td3.style.cursor = "pointer";
                 var date = doc.data().time.toDate();
                 var year = date.getYear() + 1900;
                 var month = date.getMonth() + 1;
                 var day = date.getDate();
-
                 td1.textContent = month + '.' + day + '.' +year;
-
-                td3.textContent = doc.data().title;
+                td3.innerText = doc.data().title;
+                var title = doc.data().title;
+                td3.onclick = function names() {
+                    localStorage.removeItem('id');
+                    localStorage.setItem("id", doc.data().title);
+                    location.href = 'ArchiveText.html';
+                };
+                
 
                 var userRef = db.collection("users");
 
@@ -41,7 +48,7 @@ var db = firebase.firestore();
 
                 tr.appendChild(td1);
                 tr.appendChild(td2);
-                tr.appendChild(td3);
+                tr.appendChild(td3)
                 table.appendChild(tr);
 
 
