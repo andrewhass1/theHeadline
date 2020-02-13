@@ -35,7 +35,7 @@ postRef.where("title", "==", title).limit(1)
                     .then(function(querySnapshot) {
                         querySnapshot.forEach(function(doc) {
 
-                            document.getElementById('postDetailText').innerText = "By " + doc.data().username;
+                            document.getElementById('postDetailText').innerText = "A Peak inside the mind of " + doc.data().username;
                             document.getElementById('author').innerText = "Written By: " + doc.data().username + "\n" + "Bio: " + doc.data().bio;
 
                         });

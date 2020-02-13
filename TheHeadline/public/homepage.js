@@ -89,6 +89,18 @@ postRef.where("status", "==", "NOTPOSTED").orderBy("time", "asc").limit(1)
 
     }
 
+    function archives() {
+        firebase.auth().onAuthStateChanged(function(user){
+            if (user) {
+                location.href = 'ArchivesPage.html';
+            } else {
+                location.href = 'singInPage.html';
+
+            }
+          });
+
+    }
+
     firebase.auth().onAuthStateChanged(function(user){
         if (user) {
           document.getElementById('navitem1').textContent = 'My Account';
