@@ -15,6 +15,7 @@
 
   .navbar {
       position: relative;
+      background-color: #FCFCFC;
   }
   .brand {
       position: absolute;
@@ -24,7 +25,8 @@
   }
     #articleText {
         font-size: 18px;
-        font-family: "Avenir-Light";
+        font-family: "Times";
+        color: #505050;
     }
     @media screen and (min-width: 701px) {
         div.widthAdjustment {
@@ -41,17 +43,17 @@
 
     #header {
         font-size: 33px;
-        font-family: "Avenir-Heavy";
+        font-family: "Times-Bold";
         text-align: left;
-        padding-top: 10px;
+
 
     }
 
     #postDetailText {
-        font-size: 17px;
-        font-family: "Avenir-Heavy";
+        font-size: 13px;
+        font-family: "Avenir-Medium";
         text-align: left;
-        margin-top: -10px;
+        margin-bottom: 2px;
 
     }
 
@@ -185,9 +187,12 @@
     }
     .footerContainer1 {
         position: relative;
-        background-color: #FFCCAD;
-        height: 600px;
-        width: 100%;
+        background-color: #F1F1E8;
+        height: 580px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 92%;
     }
     #createItem1 {
         color: white !important;
@@ -235,6 +240,30 @@
         height: 250px;
         width: auto;
     }
+    #letterheader {
+
+
+    }
+    #letterbody {
+        font-family: 'Times';
+        font-size: 18px;
+        text-align: left;
+
+    }
+    .letterheader {
+        font-family: 'Times-Bold';
+        font-size: 18px;
+        text-align: left;
+    }
+    .letterheader:first-child:first-letter {
+      float: left;
+      font-family: 'Times-Bold';
+      font-size: 110px;
+      line-height: 85px;
+      padding-top: 4px;
+      padding-right: 8px;
+      padding-left: 4px;
+    }
 
 
 
@@ -264,17 +293,32 @@
         </ul>
     </nav>
 
+    <!--
     <div class="headerContainer">
         <div class="center">
             <img src="assets/coverart.png" class="coverart" alt="coverart" >
         </div>
     </div>
+    -->
 
     <!--<div class="dash"></div>-->
 
     <div id="header" class="container-lg mt-5 widthAdjustment">
+      <p id="postDetailText">A peak inside the mind of Henry</p>
       <p id="aTitle"></p>
-      <p id="postDetailText">By Henry Aleaxander Macht · 10,242 views</p>
+      <div id="social" class="btn-group" role="group" aria-label="Basic example">
+          <button id="socialBtn" class="btn btn-default">
+              <img src="assets/twitter-logo-24.png" width="20" />
+          </button>
+          <button id="socialBtn" class="btn btn-default">
+              <img src="assets/facebook-circle-logo-24.png" width="20" />
+          </button>
+          <!--
+          <button id="socialBtn" class="btn btn-default">
+              <img src="assets/bookmark-regular-24.png" width="20" />
+          </button>
+          >-->
+      </div>
     </div>
 
     <div id="articleText" class="container-lg mt-4 widthAdjustment">
@@ -290,17 +334,6 @@
       <p id="author" class="footnote"></p>
       <p id="bio" class="footnote"></p>
       <p id="info">This piece will only be up for a limited time. If you wish to read it later, bookmark it or share it with friends and family. If you want to see your own article on the front page <a href="#">create</a> one and post it.</p>
-      <div id="social" class="btn-group" role="group" aria-label="Basic example">
-          <button id="socialBtn" class="btn btn-default">
-              <img src="assets/twitter-logo-24.png" width="20" />
-          </button>
-          <button id="socialBtn" class="btn btn-default">
-              <img src="assets/facebook-circle-logo-24.png" width="20" />
-          </button>
-          <button id="socialBtn" class="btn btn-default">
-              <img src="assets/bookmark-regular-24.png" width="20" />
-          </button>
-      </div>
     </div>
 
     <br>
@@ -315,23 +348,24 @@
     </div>
     -->
 
-    <div class="footerContainer1 mt-5">
-        <div class="center">
-            <img src="assets/footerart.png" class="img-fluid headerImg" alt="coverart">
-            <p id="createItem1">Let the world hear you for just $1</p>
-            <p id="createItem2">Its easy to create your own piece</p>
-            <form>
-                <button class="button" formaction="PostPage.html">Create</button>
-            </form>
+    <div class="footerContainer1 mt-4">
+        <div class="center widthAdjustment">
+            <div class="letter container">
+                <p class="letterheader">Thank you for the support. Our goal is to give people a platform where their voice is heard. We prioritize articles one at a time. We want you to focus on the current article or on creating your own.</p>
+                <p id="letterbody">Our articles are written passionate people who want to have their voice heard. Enjoy what people have to say. Discover articles that people write. They know that what they say will be herd, so they put their heart into every post. <br><br> Come back here to read our editor picks. Our editors will write about their favorite post. They change their pick every other day. Enjoy.</p>
+                <br>
+                <img src="assets/signature.png" alt="signature" width="130px" align="left">
+            </div>
+
 
         </div>
     </div>
 
     <footer id="footer">
 
-      <div class="footerContainer mt-2">
-          <p id="footItem1">Articles from real people</p>
-          <p id="footItem2">Discover articles that people write. People know that what they say will be herd, so they put there heart into every post.</p>
+      <div class="footerContainer mt-5">
+          <p id="footItem1">This is the end of the page</p>
+          <p id="footItem2">Still craving more articles? Dig through the archives or wait a few mins for the next post.</p>
 
           <hr id="break2">
       </div>
