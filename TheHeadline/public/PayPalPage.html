@@ -59,8 +59,6 @@
                 </div>
             </div>
 
-<p>a</p>
-
 
       <script src="https://www.paypal.com/sdk/js?client-id=AW0Y-uNo-RoIcxUSeO4mHY9TlGtzvyDEOr7LTtN1hKCX0opeV0SEYYtZwZq5EsFoN9rWPr9iYL005wJI"></script>
 
@@ -98,6 +96,8 @@
                           })
                           .then(function(docRef) {
                               console.log("Document written with ID: ", docRef.id);
+                              alert('Transaction completed by ' + details.payer.name.given_name);
+                              location.href = 'ReviewPage.html';
                           })
                           .catch(function(error) {
                               console.error("Error adding document: ", error);
@@ -106,9 +106,6 @@
                         // No user is signed in.
                       }
                     });
-
-                    alert('Transaction completed by ' + details.payer.name.given_name);
-
                     // Call your server to save the transaction
                     return fetch('/paypal-transaction-complete', {
                       method: 'post',
@@ -122,7 +119,6 @@
                   });
             }
           }).render('#paypal-button-container');
-
 
 
         </script>
