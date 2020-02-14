@@ -47,3 +47,15 @@ firebase.auth().onAuthStateChanged(function(user) {
     // No user is signed in.
   }
 });
+
+function create() {
+    firebase.auth().onAuthStateChanged(function(user){
+        if (user) {
+            location.href = 'PostPage.html';
+        } else {
+            location.href = 'singInPage.html';
+
+        }
+      });
+
+}
