@@ -89,7 +89,7 @@ function editbio() {
               console.log("Error getting documents: ", error);
           });
         } else {
-            location.href = 'singInPage.html';
+            location.replace('singInPage.html');
 
         }
       });
