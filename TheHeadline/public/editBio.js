@@ -16,8 +16,10 @@ function update(){
               userRef.doc(doc.id).update({
                   bio: bio2
               });
-
+              alert('Bio Updated!');
+              
           });
+          
   })
   .catch(function(error) {
       console.log("Error getting documents: ", error);
@@ -25,5 +27,7 @@ function update(){
     } else{
       location.replace("singInPage.html")
     }
+    
   });
+  
 }
