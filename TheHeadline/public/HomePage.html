@@ -32,11 +32,17 @@
         div.widthAdjustment {
             width: 680px;
         }
+        div.heightAdjustment {
+            height: 550px;
+        }
 
     }
     @media screen and (max-width: 700px) {
         div.widthAdjustment {
             width: 95%;
+        }
+        div.heightAdjustment {
+            height: 660px;
         }
     }
 
@@ -189,7 +195,7 @@
     .footerContainer1 {
         position: relative;
         background-color: #F1F1E8;
-        height: 610px;
+        height: 550px;
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -211,11 +217,11 @@
     .button {
         outline: none;
         border-radius: 5px;
-        background-color: #4EA1DF;
+        background-color: black;
         border: none;
         color: white;
-        padding-left: 150px;
-        padding-right: 150px;
+        padding-left: 80px;
+        padding-right: 80px;
         padding-top: 14px;
         padding-bottom: 14px;
         text-align: center;
@@ -266,15 +272,26 @@
       padding-left: 4px;
     }
 
+
     #miniHook {
-
-    }
-
-    #hook {
         font-family: 'Times';
         font-size: 18px;
         text-align: left;
     }
+
+    #hook {
+        font-family: 'Times';
+        font-size: 28px;
+        font-size: 2.0vw;
+        text-align: left;
+        font-weight: bold;
+    }
+    .navbar-toggler {
+        outline: none;
+        border: none;
+    }
+
+
 
 
 
@@ -284,45 +301,52 @@
 </style>
 <body>
 
-    <!-- As a link -->
-    <nav class="navbar navbar-custom2">
-        <a id="logo" class="navbar-brand brand" href="HomePage.html">The Headline</a>
-        <ul class="nav justify-content-end">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a id="logo" class="navbar-brand brand" href="HomePage.html">The Headline</a>
+
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
                 <a id="navitem1" class="nav-link active item1" onclick="navButton()" style = "cursor: pointer;">Sign in</a>
             </li>
             <li class="nav-item">
                 <a id="navitem2" class="nav-link item1" onclick="create()" style = "cursor: pointer;">Create</a>
             </li>
-            <!--
-            <li class="nav-item">
-                <a>
-                    <button onclick = "signout()" type = "submit" id="item1" class="nav-link">Sign Out</button>
-                </a>
-            </li>
-            -->
         </ul>
+
+      </div>
     </nav>
 
 
 
+
+
+<!--
     <div class="headerContainer">
         <div class="center">
-            <div class="row">
-              <div class="col-8">
-                  <p id="miniHook">Your voice will be heard</p>
-                  <p id="hook">The headline article is what everyone reads. It changes every 5 mins. Sign up and put your post on the front page. People will read what you have to say</p>
-              </div>
-              <div class="col-4">
-                  <img src="assets/getStartedart.png" class="coverart" alt="coverart" >
-              </div>
-            </div>
+            <div class="container">
 
+                <p id="miniHook">Your voice will be heard</p>
+                <p id="hook">The headline article is what everyone reads. It changes every 5 mins. Sign up and put your post on the front page. <span style="background-color: #F1F1E8">People will read what you have to say</span></p>
+                <button class="button" onclick="()">Get Started</button>
+
+            </div>
         </div>
     </div>
+-->
+
+
+
+
 
 
     <!--<div class="dash"></div>-->
+
+
 
     <div id="header" class="container-lg mt-5 widthAdjustment">
       <p id="postDetailText">A Peak inside the mind of ----</p>
@@ -369,7 +393,7 @@
     </div>
     -->
 
-    <div class="footerContainer1 mt-4">
+    <div class="footerContainer1 mt-4 heightAdjustment">
         <div class="center widthAdjustment">
             <div class="letter container">
                 <p class="letterheader">Thank you for the support. Our goal is to give people a platform where their voice is heard. We prioritize articles one at a time. We want you to focus on the current article or on creating your own.</p>
