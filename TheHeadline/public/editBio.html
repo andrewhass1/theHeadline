@@ -74,6 +74,15 @@
         #theAlert {
             display: none;
         }
+                #whiteout {
+            position: fixed;
+            width: 100%;
+            height:100%;
+            display: flex;
+            align-items: center;
+            top: 0;
+            background-color: clear;
+        }
 
 
     </style>
@@ -82,13 +91,13 @@
           <a id="logo" class="navbar-brand brand" href="HomePage.html">The Headline</a>
         </nav>
 
-        <button class="button" onclick="()">Update</button>
+        <button class="button" onclick="update()">Update</button>
 
         <div class="container-lg widthAdjustment">
 
             <form>
                 <div class="form-group row">
-                    <textarea id="title" class="form-control titleInput shadow-none" rows="8" type="text" placeholder="Write in your bio here. Tell people who are reading your articles about who you are."></textarea>
+                    <textarea id="bio" class="form-control titleInput shadow-none" rows="8" type="text"><script></script></textarea>
                 </div>
 
             </form>
@@ -115,6 +124,7 @@
         <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
 
         <script src="configure.js"></script>
+        <script src="editBio.js"></script>
 
 
     </body>

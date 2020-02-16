@@ -12,7 +12,7 @@ function login() {
       if(user) {
         location.href = 'HomePage.html'; //After successful login, user will be redirected to home.html
       } else{
-
+        
       }
     });
 }

@@ -31,7 +31,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                   querySnapshot.forEach(function(doc) {
                       // doc.data() is never undefined for query doc snapshots
                       console.log(doc.id, " => ", doc.data());
-                      document.getElementById('bio').innerText = doc.data().bio;
+                      document.getElementById('bio').innerText = doc.data().bio + "\n" + "*click to edit";
                       document.getElementById('username').innerText = doc.data().username;
 
 
@@ -44,7 +44,7 @@ firebase.auth().onAuthStateChanged(function(user) {
               console.log("Error getting documents: ", error);
           });
   } else {
-    // No user is signed in.
+    location.replace("singInPage.html")
   }
 });
 
@@ -58,4 +58,39 @@ function create() {
         }
       });
 
+}
+
+function editbio() {
+
+    firebase.auth().onAuthStateChanged(function(user){
+        if (user) {
+      postRef.where("id", "==", user.email).limit(1)
+          .get()
+          .then(function(querySnapshot) {
+              if (querySnapshot.empty) {
+                  document.getElementById('bio').innerText = ""
+                  document.getElementById('id').innerText = ""
+                  document.getElementById('username').innerText = ""
+
+              } else {
+                  querySnapshot.forEach(function(doc) {
+                      // doc.data() is never undefined for query doc snapshots
+                      console.log(doc.id, " => ", doc.data());
+                      localStorage.removeItem("bio");
+                      localStorage.setItem("bio", doc.data().bio);
+                      location.href="editBio.html"
+
+
+                  });
+              }
+
+          })
+          .catch(function(error) {
+              console.log("Error getting documents: ", error);
+          });
+        } else {
+            location.replace('singInPage.html');
+
+        }
+      });
 }
