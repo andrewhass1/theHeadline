@@ -58,11 +58,6 @@
           text-align: left;
 
       }
-
-      .theForm
-      {
-          width: 40%;
-      }
       #whiteout {
           position: fixed;
           width: 100%;
@@ -77,6 +72,16 @@
           display: flex;
           margin: 0 auto;
       }
+      @media screen and (min-width: 701px) {
+          div.widthAdjustment {
+              width: 680px;
+          }
+      }
+      @media screen and (max-width: 700px) {
+          div.widthAdjustment {
+              width: 95%;
+          }
+      }
 
 
 
@@ -89,12 +94,12 @@
         <a id="logo" class="navbar-brand brand" href="HomePage.html">The Headline</a>
       </nav>
 
-      <div id="header" class="container-lg w-50 mt-5">
+      <div id="header" class="container-lg mt-5">
           <p id="signInLabel">Register your account</p>
           <p id="createAccountLabel">Already have a Headline account? <a href="singInPage.html">Sign In</a></p>
       </div>
 
-      <div class="container-lg mt-5 theForm">
+      <div class="container-lg mt-5 widthAdjustment">
 
           <form>
               <div class="form-group">

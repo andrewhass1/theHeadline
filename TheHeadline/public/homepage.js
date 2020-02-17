@@ -1,5 +1,4 @@
 
-
 function signout(){
     firebase.auth().signOut().then(function() {
         location.href = 'singInPage.html';
@@ -89,10 +88,19 @@ postRef.where("status", "==", "NOTPOSTED").orderBy("time", "asc").limit(1)
 
     }
 
+    function getStarted(){
+        location.href = 'CreateAccount.html';
+    }
+
     firebase.auth().onAuthStateChanged(function(user){
         if (user) {
           document.getElementById('navitem1').textContent = 'My Account';
+
         } else{
+            var getStarted = document.getElementById("getStarted");
+            getStarted.style.display = "block";
             console.log('not logged in');
+
+
         }
       });
