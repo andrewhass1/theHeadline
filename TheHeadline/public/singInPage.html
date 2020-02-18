@@ -39,7 +39,7 @@
       #submitBtn {
           background-color: black;
           font-size: 14px;
-          height: 50px;
+          height: 40px;
 
       }
 
@@ -59,12 +59,12 @@
       }
 
 
-      @media screen and (min-width: 701px) {
+      @media screen and (min-width: 501px) {
           div.widthAdjustment {
-              width: 680px;
+              width: 500px;
           }
       }
-      @media screen and (max-width: 700px) {
+      @media screen and (max-width: 500px) {
           div.widthAdjustment {
               width: 95%;
           }
@@ -97,7 +97,7 @@
                 <input type="password" class="form-control" id="password">
               </div>
 
-              <button onclick="login()" type="button" class="btn btn-dark btn-block" href="HomePage.html">Sign In</button>
+              <button id="submitBtn" onclick="login()" type="button" class="btn btn-dark btn-block" href="HomePage.html">Sign In</button>
           </form>
 
       </div>
