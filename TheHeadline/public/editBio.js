@@ -18,6 +18,7 @@ function update(){
               });
               alert('Bio Updated!');
               
+              
           });
           
   })
