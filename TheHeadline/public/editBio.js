@@ -3,6 +3,7 @@ document.getElementById('bio').innerText = bio1;
 var db = firebase.firestore();
 
 
+
 function update(){
   var userRef = db.collection("users");
   var bio2 = document.getElementById('bio').value;

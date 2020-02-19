@@ -1,7 +1,7 @@
 
 function signout(){
     firebase.auth().signOut().then(function() {
-        location.href = 'singInPage.html';
+        location.href = 'HomePage.html';
     }).catch(function(error) {
       // An error happened.
     });
