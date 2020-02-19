@@ -294,7 +294,10 @@
         outline: none;
         border: none;
     }
-    
+    .social {
+        margin-right: 9px;
+    }
+
 
 
 
@@ -363,11 +366,18 @@
       <p id="postDetailText">A Peak inside the mind of ----</p>
       <p id="aTitle"></p>
       <div id="social" class="btn-group" role="group" aria-label="Basic example">
-              <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">
-                Share post and your ideas today!</a>
-              <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          <div class="fb-share-button" data-href="http://localhost:5000/HomePage.html" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A5000%2FHomePage.html&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
-            Share</a></div>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <div class="social">
+              <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button*" data-show-count="false">
+                <img src="assets/twitter-logo-24.png" alt="social" width="30px">
+              </a>
+          </div>
+
+          <div class="fb-share-button*" data-href="http://localhost:5000/HomePage.html" data-layout="button" data-size="small">
+              <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A5000%2FHomePage.html&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+                  <img src="assets/facebook-circle-logo-24.png" alt="social" width="30px">
+              </a>
+          </div>
           <!--
           <button id="socialBtn" class="btn btn-default">
               <img src="assets/bookmark-regular-24.png" width="20" />
