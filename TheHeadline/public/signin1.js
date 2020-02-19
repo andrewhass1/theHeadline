@@ -16,3 +16,11 @@ function login() {
       }
     });
 }
+
+function forgot() {
+  if(document.getElementById("email").value != '')
+{
+  var email = document.getElementById("email").value;
+  firebase.auth().sendPasswordResetEmail(email);
+    }
+}
