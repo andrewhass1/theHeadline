@@ -18,8 +18,8 @@ function update(){
               });
               alert('Bio Updated!');
               
-              
           });
+          
           
   })
   .catch(function(error) {
