@@ -57,20 +57,44 @@
             display: flex;
             margin: 0 auto;
         }
+        .navbar-toggler {
+            outline: none;
+            border: none;
+        }
+        .navbar-light .navbar-toggler-icon{
+            background-image: url(assets/menu-regular-24.png)!important;
+            width: 21px;
+            height: 21px;
+            margin-top: 4px;
+        }
+        #logo {
+            font-family: 'Girassol', cursive;
+            color: black;
+        }
     </style>
     <body>
 
-        <nav id="navBar" class="navbar navbar-custom2">
-          <a id="logo" class="navbar-brand brand" href="HomePage.html">The Headline</a>
-          <ul class="nav justify-content-end">
-              <li class="nav-item">
-                  <a id="singoutbutton" class="nav-link active item1" onclick="signout()" style = "cursor:pointer">Sign out</a>
-              </li>
-              <li class="nav-item">
-                  <a id="navitem2" class="nav-link item1" href="ArchivesPage.html" style = "cursor: pointer;">The Archives</a>
-              </li>
-
-          </ul>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse w-100 order-1 order-lg-0" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a id="singoutbutton" class="nav-link active item1" onclick="signout()" style = "cursor:pointer">Sign out</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="navitem2" class="nav-link active item1" href="ArchivesPage.html" style = "cursor: pointer;">The Archives</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex w-100 order-0">
+                <div class="w-100">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <a id="logo" class="navbar-brand text-center w-100" href="#">The Headline</a>
+                <span class="w-100"></span>
+            </div>
+            <span class="w-100"></span>
         </nav>
         <div class="container center">
             <p id="username"></p>

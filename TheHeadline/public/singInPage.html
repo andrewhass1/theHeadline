@@ -26,7 +26,6 @@
           font-size: 25px;
           font-family: "Avenir-Black";
           text-align: center;
-          padding-top: 50px;
 
       }
       #createAccountLabel {
@@ -69,6 +68,32 @@
               width: 95%;
           }
       }
+      .info {
+          text-align: center;
+          font-size: 11px;
+
+      }
+      .bootominfo {
+          margin-top: -11px;
+      }
+      .footerContainer {
+          position: absolute;
+          bottom: 0px;
+          width: 100%;
+      }
+      .item1 {
+          font-family: "Avenir-Heavy";
+          color: black;
+          font-size: 13px;
+      }
+      #logo {
+          font-family: 'Girassol', cursive;
+          color: black;
+      }
+      .navbar-toggler {
+          outline: none;
+          border: none;
+      }
 
 
 
@@ -76,8 +101,18 @@
   </style>
   <body>
 
-      <nav id="navBar" class="navbar navbar-custom2">
-        <a id="logo" class="navbar-brand brand" href="HomePage.html">The Headline</a>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="collapse navbar-collapse w-100 order-1 order-lg-0" id="navbarNav">
+
+          </div>
+          <div class="d-flex w-100 order-0">
+              <div class="w-100">
+
+              </div>
+              <a id="logo" class="navbar-brand text-center w-100" href="#">The Headline</a>
+              <span class="w-100"></span>
+          </div>
+          <span class="w-100"></span>
       </nav>
 
       <div id="header" class="container-lg mt-5">
@@ -104,6 +139,12 @@
 
       <div class="container-lg w-50 mt-5">
           <p id="forgetPwLabel"><a href="#">Forgot account?</a></p>
+      </div>
+
+      <div class="footerContainer">
+          <hr>
+          <p class="info" >This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
+          <p class="info bootominfo">© 2020 The Headline Company <a href="#">Privacy Policy</a> <a href="#">Help</a> <a href="#">Contact Us.</a></p>
       </div>
 
 
