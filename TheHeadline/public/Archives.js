@@ -23,11 +23,6 @@ function title(title){
                 td1.textContent = month + '.' + day + '.' +year;
                 td3.innerText = doc.data().title;
                 var title = doc.data().title;
-                td3.onclick = function names() {
-                    localStorage.removeItem('id');
-                    localStorage.setItem("id", title);
-                    location.href = 'ArchiveText.html';
-                };
                 
 
                 var userRef = db.collection("users");
@@ -45,6 +40,12 @@ function title(title){
                     .catch(function(error) {
                         console.log("Error getting documents: ", error);
                     });
+                    td3.onclick = function names() {
+                        localStorage.removeItem('id');
+                        localStorage.setItem("id", title);
+                        localStorage.setItem("author", td2.textContent)
+                        location.href = 'ArchiveText.html';
+                    };
 
                 tr.appendChild(td1);
                 tr.appendChild(td2);
