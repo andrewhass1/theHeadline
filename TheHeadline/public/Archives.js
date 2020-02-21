@@ -25,7 +25,7 @@ function title(title){
                 var title = doc.data().title;
                 td3.onclick = function names() {
                     localStorage.removeItem('id');
-                    localStorage.setItem("id", doc.data().title);
+                    localStorage.setItem("id", title);
                     location.href = 'ArchiveText.html';
                 };
                 

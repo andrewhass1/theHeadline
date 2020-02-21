@@ -26,7 +26,7 @@ function register() {
             var usersName = document.getElementById('name').value;
             db.collection("users").add({
                 username: usersName,
-                id: email,
+                id: user.uid,
                 bio: "I am new to headline and want to share my beleifs, stories, and ideas.",
 
             })

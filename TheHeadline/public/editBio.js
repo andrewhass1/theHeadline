@@ -10,7 +10,7 @@ function update(){
   localStorage.setItem("bio", bio2);
   firebase.auth().onAuthStateChanged(function(user){
     if(user) { //After successful login, user will be redirected to home.html
-      userRef.where("id", "==", user.email).limit(1)
+      userRef.where("id", "==", user.uid).limit(1)
   .get()
   .then(function(querySnapshot) {
           querySnapshot.forEach(function(doc) {

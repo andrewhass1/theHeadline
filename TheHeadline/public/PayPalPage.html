@@ -90,7 +90,7 @@
                           db.collection("posts").add({
                               title: localStorage.getItem('title'),
                               content: localStorage.getItem('content'),
-                              user: user.email,
+                              user: user.uid,
                               time: firebase.firestore.FieldValue.serverTimestamp(),
                               status: "NOTPOSTED"
                           })
