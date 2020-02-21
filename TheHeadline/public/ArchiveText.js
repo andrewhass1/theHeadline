@@ -31,7 +31,7 @@ postRef.where("title", "==", title).limit(1)
 
                 var userRef = db.collection("users");
 
-                userRef.where("id", "==", doc.data().id)
+                userRef.where("id", "==", title)
                     .get()
                     .then(function(querySnapshot) {
                         querySnapshot.forEach(function(doc) {
