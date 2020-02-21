@@ -3,6 +3,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-client_id" content="776776851089-c83bth4e1veron4ftqdk0bl0f2dakt6l.apps.googleusercontent.com">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -58,12 +59,12 @@
       }
 
 
-      @media screen and (min-width: 501px) {
+      @media screen and (min-width: 451px) {
           div.widthAdjustment {
-              width: 500px;
+              width: 450px;
           }
       }
-      @media screen and (max-width: 500px) {
+      @media screen and (max-width: 450px) {
           div.widthAdjustment {
               width: 95%;
           }
@@ -71,6 +72,9 @@
       .info {
           text-align: center;
           font-size: 11px;
+          padding-left: 15px;
+          padding-right: 15px;
+
 
       }
       .bootominfo {
@@ -80,6 +84,7 @@
           position: absolute;
           bottom: 0px;
           width: 100%;
+          background-color: white;
       }
       .item1 {
           font-family: "Avenir-Heavy";
@@ -93,6 +98,14 @@
       .navbar-toggler {
           outline: none;
           border: none;
+      }
+      #googleSignInButton {
+          width: 100%;
+          height: 45px;
+          text-align: center;
+          background-color: #4285F5;
+          color: white;
+
       }
 
 
@@ -121,6 +134,10 @@
       </div>
 
       <div class="container-lg mt-5 widthAdjustment">
+
+          <button id="googleSignInButton" type="button" name="button" onclick="googleSingIn()">Sign in with google</button>
+
+          <hr>
 
           <form>
               <div class="form-group">
@@ -153,7 +170,7 @@
 
 
 
-
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -173,6 +190,35 @@
 
     <script src="configure.js"></script>
     <script src="signin1.js"></script>
+
+    <script>
+        function googleSingIn() {
+            console.log("Sign in with google");
+            var provider = new firebase.auth.GoogleAuthProvider();
+
+            firebase.auth().signInWithPopup(provider).then(function(result) {
+              // This gives you a Google Access Token. You can use it to access the Google API.
+              var token = result.credential.accessToken;
+              // The signed-in user info.
+              var user = result.user;
+              // ...
+            }).catch(function(error) {
+              // Handle Errors here.
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              // The email of the user's account used.
+              var email = error.email;
+              // The firebase.auth.AuthCredential type that was used.
+              var credential = error.credential;
+              // ...
+            });
+        }
+
+    </script>
+
+
+
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 </body>
 
 
