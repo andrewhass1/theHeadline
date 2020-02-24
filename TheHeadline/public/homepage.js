@@ -89,7 +89,7 @@ postRef.where("status", "==", "NOTPOSTED").orderBy("time", "asc").limit(1)
     }
 
     function getStarted(){
-        location.href = 'CreateAccount.html';
+        location.href = 'GetStarted.html';
     }
 
     firebase.auth().onAuthStateChanged(function(user){

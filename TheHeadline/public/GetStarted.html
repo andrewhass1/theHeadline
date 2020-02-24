@@ -51,10 +51,16 @@
             div.widthAdjustment {
                 width: 620px;
             }
+            p.footItem2-0 {
+                font-size: 33px;
+            }
         }
         @media screen and (max-width: 620px) {
             div.widthAdjustment {
                 width: 95%;
+            }
+            p.footItem2-0 {
+                font-size: 25px;
             }
         }
         #pitchcontainer {
@@ -72,6 +78,67 @@
               background-position: center;
               background-repeat: no-repeat;
               background-size: cover;
+        }
+        #logo2 {
+            color: white !important;
+            font-family: 'Girassol', cursive;
+            font-size: 22px;
+            padding-left: -10px;
+        }
+
+        .navbar-custom {
+            background-color: #191919;
+        }
+        #footer {
+            background-color: #191919;
+            height: 230px;
+        }
+        #item3 {
+            font-family: "Avenir-Medium";
+            color: white;
+            font-size: 14px;
+        }
+        .footerContainer {
+            padding-left: 35px;
+            padding-right: 35px;
+        }
+        .footerContainer2 {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        #footItem1 {
+            padding-top: 40px;
+            color: white;
+            font-size: 18px;
+            font-family: "Avenir-Black";
+        }
+        #footItem2 {
+            color: white;
+            font-size: 14px;
+            font-family: "Avenir-Heavy";
+            margin-top: -10px;
+        }
+        #break2 {
+            background-color: white !important;
+            color: white !important;
+        }
+        .footerContainer0 {
+            background-color: #FFF1EA;
+            height: 280px;
+            padding-left: 35px;
+            padding-right: 35px;
+        }
+        .footItem1-0 {
+            padding-top: 60px;
+            color: black;
+            font-size: 25px;
+            font-family: "Avenir-Black";
+        }
+        .footItem2-0 {
+            color: black;
+            font-size: 33px;
+            font-family: "Avenir-Medium";
+            margin-top: -10px;
         }
 
 
@@ -95,9 +162,56 @@
             <div id="pitchcontainer" class="container-lg widthAdjustment">
                 <p id="pitchText"><span id="logo">The Headline</span> <br> <span id="header">Join and let the world hear you.</span> <br> You write it and we will show it to the world. Post something and it will be on the front page for 5 mins. Everybody will read what you have to say - Finally.
 </p>
-                <button class="button" type="button" name="button">Join right now for free</button>
+                <button class="button" type="button" name="button" onclick="getStarted()">Join right now for free</button>
             </div>
         </div>
+
+        <div class="footerContainer0">
+            <p class="footItem1-0">About the Headline</p>
+            <p class="footItem2-0">We believe that everyone voice should be heard. Post something and you won’t be scrolled over. </p>
+        </div>
+
+
+
+
+        <footer id="footer">
+
+
+
+          <div class="footerContainer">
+              <p id="footItem1">Join us, you will love it.</p>
+              <p id="footItem2">It cost $1 to post, but you can find that money in the couch cushion or the dryer. Its worth it.</p>
+
+              <hr id="break2">
+          </div>
+
+          <div class="footerContainer2">
+              <nav id="navBar" class="navbar navbar-custom">
+                <a id="logo2" class="navbar-brand" href="#">The Headline</a>
+                <ul class="nav justify-content-end">
+                  <li class="nav-item navItem-custom">
+                    <a id="item3" class="nav-link active" href="#">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a id="item3" class="nav-link" href="#">Legal</a>
+                  </li>
+                </ul>
+              </nav>
+          </div>
+
+
+
+
+
+        </footer>
+
+        <script type="text/javascript">
+
+            function getStarted(){
+                location.href = 'CreateAccount.html';
+            }
+
+        </script>
 
 
 
