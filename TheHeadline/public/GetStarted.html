@@ -12,13 +12,6 @@
     </head>
     <style>
 
-        .center {
-            text-align:center;
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%,-50%);
-            width: 100%;
-        }
         #pitchText {
             text-align: left;
             font-size: 20px;
@@ -42,29 +35,46 @@
             font-weight: bold;
             float: left;
         }
-        #logo {
-            font-family: 'Girassol', cursive;
+        #header {
+            font-family: 'Times';
             font-size: 30px;
-        }
-        a {
-            font-family: "Times";
-            font-size: 12px;
-        }
-        #footerText {
-            text-align: left;
-            font-size: 12px;
-            font-family: "Times";
-        }
-        #footerHeader {
-            text-align: left;
-            font-size: 12px;
-            font-family: "Times";
             font-weight: bold;
+
         }
-        .footer {
-            width: 300px;
-            margin-top: 50px;
+        #logo {
+            font-family: 'Avenir-Black';
+            font-size: 15px;
+
         }
+
+        @media screen and (min-width: 621px) {
+            div.widthAdjustment {
+                width: 620px;
+            }
+        }
+        @media screen and (max-width: 620px) {
+            div.widthAdjustment {
+                width: 95%;
+            }
+        }
+        #pitchcontainer {
+            padding-top: 220px;
+        }
+        .main {
+            width: 100%;
+            /* The image used */
+              background-image: url("assets/getstartedart.png");
+
+              /* Full height */
+              height: 100%;
+
+              /* Center and scale the image nicely */
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+        }
+
+
 
 
 
@@ -75,38 +85,22 @@
     </style>
     <body>
 
-        <div class="center">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <h1></h1>
-                        <div class="center">
-                            <div class="container">
-                                <p id="pitchText"><span id="logo">The Headline</span> <br> Welcome to a place on the internet where your voice is heard. <br> Post something and it will be on the front page for 5 mins. <br> Everybody will read what you have to say - Finally.</p>
-                                <button class="button" type="button" name="button">Join right now for free</button>
-
-                                <br>
-
-                                <a href="#">Already Have an account? Sign In</a>
-
-                                <div class="footer">
-                                    <p id="footerText"><span id="footerheader">More about us</span> <br> Post cost one dollar to for five mins on the front page. Both price and time are subject to change. No initial payment required only pay when you post. By joining you agree to our terms and conditions.</p>
-                                </div>
-
-                            </div>
 
 
 
 
 
-                        </div>
-                    </div>
-                    <div class="col">
-                        <img src="assets/ipadshot.png" alt="" width="500px">
-                    </div>
-                </div>
+
+        <div class="main">
+            <div id="pitchcontainer" class="container-lg widthAdjustment">
+                <p id="pitchText"><span id="logo">The Headline</span> <br> <span id="header">Join and let the world hear you.</span> <br> You write it and we will show it to the world. Post something and it will be on the front page for 5 mins. Everybody will read what you have to say - Finally.
+</p>
+                <button class="button" type="button" name="button">Join right now for free</button>
             </div>
         </div>
+
+
+
 
 
 
