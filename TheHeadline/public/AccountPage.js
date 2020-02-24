@@ -44,7 +44,7 @@ firebase.auth().onAuthStateChanged(function(user) {
               console.log("Error getting documents: ", error);
           });
   } else {
-    location.replace("singInPage.html")
+    location.replace("HomePage.html")
   }
 });
 
@@ -53,7 +53,7 @@ function create() {
         if (user) {
             location.href = 'PostPage.html';
         } else {
-            location.href = 'HomePage.html';
+            location.href = 'singInPage.html';
 
         }
       });

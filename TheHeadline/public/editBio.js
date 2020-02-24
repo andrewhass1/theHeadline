@@ -22,7 +22,7 @@ function update(){
               .get()
               .then(function(querySnapshot) {
             
-                location.href = 'HomePage.html';
+                location.href = 'MyAcoountPage.html';
                       
                       
               })
