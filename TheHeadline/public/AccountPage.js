@@ -53,7 +53,7 @@ function create() {
         if (user) {
             location.href = 'PostPage.html';
         } else {
-            location.href = 'singInPage.html';
+            location.href = 'HomePage.html';
 
         }
       });

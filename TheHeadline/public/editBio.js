@@ -38,7 +38,7 @@ function update(){
   });
 
     } else{
-      location.replace("singInPage.html")
+      location.replace("HomePage.html")
     }
     
   });
