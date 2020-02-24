@@ -18,7 +18,17 @@ function update(){
                   bio: bio2
               });
               alert('Bio Updated!');
-              
+              userRef.where("bio", "==", bio2).limit(1)
+              .get()
+              .then(function(querySnapshot) {
+            
+                location.href = 'HomePage.html';
+                      
+                      
+              })
+              .catch(function(error) {
+                  console.log("Error getting documents: ", error);
+              })
           });
           
           
@@ -26,6 +36,7 @@ function update(){
   .catch(function(error) {
       console.log("Error getting documents: ", error);
   });
+
     } else{
       location.replace("singInPage.html")
     }
