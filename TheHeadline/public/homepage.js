@@ -24,7 +24,7 @@ postRef.where("status", "==", "NOTPOSTED").orderBy("time", "asc").limit(1)
             querySnapshot.forEach(function(doc) {
                 document.getElementById('aText').innerText = doc.data().content;
                 document.getElementById('aTitle').innerText = doc.data().title;
-
+                var author = doc.data().user;
 
 
                 postRef.doc(doc.id).update({
@@ -33,11 +33,11 @@ postRef.where("status", "==", "NOTPOSTED").orderBy("time", "asc").limit(1)
 
                 var userRef = db.collection("users");
 
-                userRef.where("id", "==", doc.data().user)
+                userRef.where("id", "==", author)
                     .get()
                     .then(function(querySnapshot) {
                         querySnapshot.forEach(function(doc) {
-
+                            console.log(author);
                             document.getElementById('postDetailText').innerText = "A Peak inside the mind of " + doc.data().username;
                             document.getElementById('author').innerText = "Written By: " + doc.data().username + "\n" + "Bio: " + doc.data().bio;
 

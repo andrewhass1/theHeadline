@@ -11,6 +11,6 @@ firebase.auth().onAuthStateChanged(function(user) {
          document.getElementById('body').innerText = "It will be on the front page in about " + yourTime + " mins";
       });
    } else {
-     location.replace('singInPage.html');
+     location.replace('HomePage.html');
    }
  });

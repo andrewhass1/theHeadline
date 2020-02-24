@@ -15,7 +15,7 @@ function publish() {
                 localStorage.setItem("content", theContent);
                 location.href = 'PayPalPage.html';
             } else {
-              location.replace('singInPage.html');
+              location.replace('HomePage.html');
             }
           });
     }

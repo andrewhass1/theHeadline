@@ -19,12 +19,12 @@ firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
       var loadingCover = document.getElementById("whiteout");
       loadingCover.style.display = "none";
-      postRef.where("id", "==", user.email).limit(1)
+      console.log(user.uid);
+      postRef.where("id", "==", user.uid).limit(1)
           .get()
           .then(function(querySnapshot) {
               if (querySnapshot.empty) {
                   document.getElementById('bio').innerText = ""
-                  document.getElementById('id').innerText = ""
                   document.getElementById('username').innerText = ""
 
               } else {
@@ -44,7 +44,7 @@ firebase.auth().onAuthStateChanged(function(user) {
               console.log("Error getting documents: ", error);
           });
   } else {
-    location.replace("singInPage.html")
+    location.replace("HomePage.html")
   }
 });
 
@@ -64,7 +64,7 @@ function editbio() {
 
     firebase.auth().onAuthStateChanged(function(user){
         if (user) {
-      postRef.where("id", "==", user.email).limit(1)
+      postRef.where("id", "==", user.uid).limit(1)
           .get()
           .then(function(querySnapshot) {
               if (querySnapshot.empty) {
