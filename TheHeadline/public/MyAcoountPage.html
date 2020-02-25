@@ -8,14 +8,10 @@
         <title></title>
     </head>
     <style>
-        .brand {
-            font-family: 'Girassol', cursive;
-            color: black;
-            position: absolute;
-            left: 50%;
-            margin-left: -50px !important;  /* 50% of your logo width */
-            display: block;
-        }
+
+        button:focus {outline:0;}
+
+
         .item1 {
             font-family: "Avenir-Heavy";
             color: black;
@@ -58,14 +54,14 @@
             margin: 0 auto;
         }
         .navbar-toggler {
-            outline: none;
             border: none;
+            margin-top: -40px;
+
         }
         .navbar-light .navbar-toggler-icon{
             background-image: url(assets/menu-regular-24.png)!important;
             width: 21px;
             height: 21px;
-            margin-top: 6px;
         }
         #logo {
             font-family: 'Girassol', cursive;
@@ -75,28 +71,47 @@
     <body>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse w-100 order-1 order-lg-0" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a id="navitem2" class="nav-link active item1" href="ArchivesPage.html" style = "cursor: pointer;">The Archives</a>
-                    </li>
-                    <li class="nav-item">
-                        <a id="singoutbutton" class="nav-link active item1" onclick="signout()" style = "cursor:pointer">Sign out</a>
-                    </li>
 
-                </ul>
-            </div>
-            <div class="d-flex w-100 order-0">
-                <div class="w-100">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-                <a id="logo" class="navbar-brand text-center w-100" href="HomePage.html">The Headline</a>
-                <span class="w-100"></span>
-            </div>
-            <span class="w-100"></span>
+        <!--  Show this only on mobile to medium screens  -->
+          <a id="logo" class="navbar-brand d-lg-none w-100 text-center" href="HomePage.html">The Headline</a>
+
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+        <!--  Use flexbox utility classes to change how the child elements are justified  -->
+          <div class="collapse navbar-collapse justify-content-between" id="navbarToggle">
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a id="navitem2" class="nav-link active item1" href="ArchivesPage.html" style = "cursor: pointer;">The Archives</a>
+                </li>
+                <li class="nav-item">
+                    <a id="navitem2" class="nav-link active item1" onclick="create()" style = "cursor: pointer;">Create</a>
+                </li>
+
+            </ul>
+
+
+        <!--   Show this only lg screens and up   -->
+            <a id="logo" class="navbar-brand d-none d-lg-block" href="HomePage.html">The Headline</a>
+
+
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a id="singoutbutton" class="nav-link active item1" onclick="signout()" style = "cursor:pointer">Sign out</a>
+                </li>
+                <li class="nav-item">
+                    <a id="navitem1" class="nav-link active item1" onclick="()">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                </li>
+
+            </ul>
+          </div>
         </nav>
+
+
         <div class="container center">
             <p id="username"></p>
             <a id="bio" onclick = "editbio()" style = "cursor:pointer"></a>
