@@ -80,12 +80,6 @@
       .bootominfo {
           margin-top: -11px;
       }
-      .footerContainer {
-          position: absolute;
-          bottom: 0px;
-          width: 100%;
-          background-color: white;
-      }
       .item1 {
           font-family: "Avenir-Heavy";
           color: black;
@@ -107,62 +101,97 @@
           color: white;
 
       }
+      html,
+      body {
+       height: 100%;
+       position: relative;
+      }
+      .main-container {
+       min-height: 100vh; /* will cover the 100% of viewport */
+       overflow: hidden;
+       display: block;
+       position: relative;
+       padding-bottom: 100px; /* height of your footer */
+      }
+      footer {
+       position: absolute;
+       bottom: 0;
+       width: 100%;
+       background-color: white;
+      }
+
+      
+
 
 
 
 
   </style>
   <body>
+      <div class=”main-container”>
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="collapse navbar-collapse w-100 order-1 order-lg-0" id="navbarNav">
+          <section>
+              <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                  <div class="collapse navbar-collapse w-100 order-1 order-lg-0" id="navbarNav">
 
-          </div>
-          <div class="d-flex w-100 order-0">
-              <div class="w-100">
+                  </div>
+                  <div class="d-flex w-100 order-0">
+                      <div class="w-100">
 
-              </div>
-              <a id="logo" class="navbar-brand text-center w-100" href="#">The Headline</a>
-              <span class="w-100"></span>
-          </div>
-          <span class="w-100"></span>
-      </nav>
+                      </div>
+                      <a id="logo" class="navbar-brand text-center w-100" href="HomePage.html">The Headline</a>
+                      <span class="w-100"></span>
+                  </div>
+                  <span class="w-100"></span>
+              </nav>
 
-      <div id="header" class="container-lg mt-5">
-          <p id="signInLabel">Sign in to your account</p>
-          <p id="createAccountLabel">Don’t have a Headline account? <a href="CreateAccount.html">Create one</a></p>
-      </div>
-
-      <div class="container-lg mt-5 widthAdjustment">
-
-          <button id="googleSignInButton" type="button" name="button" onclick="googleSingIn()">Sign in with google</button>
-
-          <hr>
-
-          <form>
-              <div class="form-group">
-                <label class="formLabel" for="exampleInputEmail1">Email</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"\>
-              </div>
-              <div class="form-group">
-                <label class="formLabel" for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="password">
+              <div id="header" class="container-lg mt-5">
+                  <p id="signInLabel">Sign in to your account</p>
+                  <p id="createAccountLabel">Don’t have a Headline account? <a href="CreateAccount.html">Create one</a></p>
               </div>
 
-              <button id="submitBtn" onclick="login()" type="button" class="btn btn-dark btn-block" href="HomePage.html">Sign In</button>
-          </form>
+              <div class="container-lg mt-5 widthAdjustment">
+
+                  <!--<button id="googleSignInButton" type="button" name="button" onclick="googleSingIn()">Sign in with google</button>-->
+                  <div id="my-signin2"></div>
+
+                  <hr>
+
+                  <form>
+                      <div class="form-group">
+                        <label class="formLabel" for="exampleInputEmail1">Email</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"\>
+                      </div>
+                      <div class="form-group">
+                        <label class="formLabel" for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="password">
+                      </div>
+
+                      <button id="submitBtn" onclick="login()" type="button" class="btn btn-dark btn-block" href="HomePage.html">Sign In</button>
+                  </form>
+
+              </div>
+
+              <div class="container-lg w-50 mt-5">
+                  <p id="forgetPwLabel"><buttton id="new" onclick="forgot()" type="button">Forgot account?</button></p>
+              </div>
+
+
+          </section>
+
+          <footer class="footerContainer">
+              <hr>
+              <p class="info" >This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
+              <p class="info bootominfo">© 2020 The Headline Company <a href="#">Privacy Policy</a> <a href="#">Help</a> <a href="#">Contact Us.</a></p>
+
+          </footer>
+
+
+
 
       </div>
 
-      <div class="container-lg w-50 mt-5">
-          <p id="forgetPwLabel"><buttton id="new" onclick="forgot()" type="button">Forgot account?</button></p>
-      </div>
 
-      <div class="footerContainer">
-          <hr>
-          <p class="info" >This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
-          <p class="info bootominfo">© 2020 The Headline Company <a href="#">Privacy Policy</a> <a href="#">Help</a> <a href="#">Contact Us.</a></p>
-      </div>
 
 
 
@@ -197,6 +226,24 @@
             var provider = new firebase.auth.GoogleAuthProvider();
 
             firebase.auth().signInWithRedirect(provider);
+        }
+
+        function onSuccess(googleUser) {
+          console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+        }
+        function onFailure(error) {
+          console.log(error);
+        }
+        function renderButton() {
+          gapi.signin2.render('my-signin2', {
+            'scope': 'profile email',
+            'width': 240,
+            'height': 50,
+            'longtitle': true,
+            'theme': 'dark',
+            'onsuccess': onSuccess,
+            'onfailure': onFailure
+          });
         }
 
     </script>
