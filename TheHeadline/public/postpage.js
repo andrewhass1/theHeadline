@@ -13,6 +13,7 @@ function publish() {
                 var theContent = document.getElementById('content').value;
                 localStorage.setItem("title", theTitle);
                 localStorage.setItem("content", theContent);
+                localStorage.setItem("control", "confirm");
                 location.href = 'PayPalPage.html';
             } else {
               location.replace('HomePage.html');

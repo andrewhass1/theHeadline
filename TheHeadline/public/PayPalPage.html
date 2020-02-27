@@ -84,8 +84,8 @@
 
 
         <script>
-            var title = localStorage.getItem('title');
-              if(title == 'null'){
+            var control = localStorage.getItem('control');
+              if(control == '1null123'){
               location.replace('HomePage.html')
             }
             
@@ -123,7 +123,7 @@
                               console.log("Document written with ID: ", docRef.id);
                               alert('Transaction completed by ' + details.payer.name.given_name);
                               location.href = 'ReviewPage.html';
-                              localStorage.setItem("title", 'null');
+                              localStorage.setItem("control", '1null123');
                           })
                           .catch(function(error) {
                               console.error("Error adding document: ", error);
