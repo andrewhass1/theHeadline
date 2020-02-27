@@ -14,3 +14,10 @@ firebase.auth().onAuthStateChanged(function(user) {
      location.replace('HomePage.html');
    }
  });
+ firebase.auth().onAuthStateChanged(function(user) {
+   if (user) {
+     // User is signed in.
+   } else {
+     location.replace('singInPage.html')
+   }
+ });

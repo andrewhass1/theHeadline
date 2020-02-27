@@ -84,6 +84,10 @@
 
 
         <script>
+            var title = localStorage.getItem('title');
+              if(title == 'null'){
+              location.replace('singInPage.html')
+            }
           paypal.Buttons({
              style: {
                 layout:  'horizontal',
@@ -118,6 +122,7 @@
                               console.log("Document written with ID: ", docRef.id);
                               alert('Transaction completed by ' + details.payer.name.given_name);
                               location.href = 'ReviewPage.html';
+                              localStorage.setItem("title", 'null');
                           })
                           .catch(function(error) {
                               console.error("Error adding document: ", error);

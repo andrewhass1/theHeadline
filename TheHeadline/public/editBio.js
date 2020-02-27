@@ -1,7 +1,13 @@
 var bio1 = localStorage.getItem('bio');
 document.getElementById('bio').innerText = bio1;
 var db = firebase.firestore();
-
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+  } else {
+    location.replace('singInPage.html')
+  }
+});
 
 
 function update(){
