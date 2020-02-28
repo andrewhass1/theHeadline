@@ -33,7 +33,7 @@ postRef.where("status", "==", "NOTPOSTED").orderBy("time", "asc").limit(1)
 
                 var userRef = db.collection("users");
 
-                userRef.where("id", "==", author)
+                userRef.where("id", "==", doc.data().user)
                     .get()
                     .then(function(querySnapshot) {
                         querySnapshot.forEach(function(doc) {
