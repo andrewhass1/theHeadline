@@ -13,6 +13,7 @@ function publish() {
                 var theContent = document.getElementById('content').value;
                 localStorage.setItem("title", theTitle);
                 localStorage.setItem("content", theContent);
+                localStorage.setItem("control", "confirm");
                 location.href = 'PayPalPage.html';
             } else {
               location.replace('HomePage.html');
@@ -21,3 +22,10 @@ function publish() {
     }
 
 }
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+    } else {
+      location.replace('singInPage.html')
+    }
+  });

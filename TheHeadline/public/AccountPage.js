@@ -14,7 +14,13 @@ function signout() {
 
 var db = firebase.firestore();
 var postRef = db.collection("users");
-
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+    } else {
+      location.replace('singInPage.html')
+    }
+  });
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
       var loadingCover = document.getElementById("whiteout");

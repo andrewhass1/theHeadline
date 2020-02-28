@@ -84,6 +84,11 @@
 
 
         <script>
+            var control = localStorage.getItem('control');
+              if(control == '1null123'){
+              location.replace('HomePage.html')
+            }
+            
           paypal.Buttons({
              style: {
                 layout:  'horizontal',
@@ -118,6 +123,7 @@
                               console.log("Document written with ID: ", docRef.id);
                               alert('Transaction completed by ' + details.payer.name.given_name);
                               location.href = 'ReviewPage.html';
+                              localStorage.setItem("control", '1null123');
                           })
                           .catch(function(error) {
                               console.error("Error adding document: ", error);

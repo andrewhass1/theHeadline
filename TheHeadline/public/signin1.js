@@ -11,6 +11,7 @@ function login() {
     firebase.auth().onAuthStateChanged(function(user){
       if(user) {
         location.href = 'HomePage.html'; //After successful login, user will be redirected to home.html
+        
       } else{
 
       }
