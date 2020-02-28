@@ -9,21 +9,6 @@ function update(){
                   userRef.doc(doc.id).update({
                       TwitterUN: document.getElementById("inlineFormInputGroupUsername").value
                   });
-                  alert('Twitter Saved!');
-                  userRef.where("bio", "==", document.getElementById("inlineFormInputGroupUsername").value).limit(1)
-                  .get()
-                  .then(function(querySnapshot) {
-
-                    location.href = 'ReviewPage.html';
-
-
-                  })
-                  .catch(function(error) {
-                      console.log("Error getting documents: ", error);
-                  })
-              });
-
-
       })
       .catch(function(error) {
           console.log("Error getting documents: ", error);
