@@ -28,12 +28,13 @@ function register() {
                 username: usersName,
                 id: user.uid,
                 bio: "I am new to headline and want to share my beleifs, stories, and ideas.",
+                twitterUN: "@"
 
             })
             .then(function(docRef) {
                 console.log("Document written with ID: ", docRef.id);
                 location.href = 'HomePage.html';
-                
+
             })
             .catch(function(error) {
                 console.error("Error adding document: ", error);

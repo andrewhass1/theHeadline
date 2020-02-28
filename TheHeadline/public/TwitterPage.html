@@ -1,0 +1,242 @@
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-client_id" content="776776851089-c83bth4e1veron4ftqdk0bl0f2dakt6l.apps.googleusercontent.com">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Girassol&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:500&display=swap" rel="stylesheet">
+
+
+  </head>
+  <style>
+
+      button:focus {outline:0;}
+
+      .brand {
+          font-family: 'Girassol', cursive;
+          color: black;
+          position: absolute;
+          left: 50%;
+          margin-left: -50px !important;  /* 50% of your logo width */
+          display: block;
+          margin-top: 20px;
+      }
+
+      #signInLabel {
+          font-size: 25px;
+          font-family: "Avenir-Black";
+          text-align: center;
+
+      }
+      #createAccountLabel {
+          font-size: 15px;
+          font-family: "Avenir-Heavy";
+          text-align: center;
+          margin-top: -15px;
+      }
+
+      #submitBtn {
+          background-color: black;
+          font-size: 14px;
+          height: 40px;
+
+      }
+
+      .formLabel
+      {
+          font-size: 13px;
+          font-family: "Avenir-Heavy";
+          color: #6A6A73;
+      }
+
+      #forgetPwLabel
+      {
+          font-size: 13px;
+          font-family: "Avenir-Medium";
+          text-align: center;
+          margin-top: -15px;
+      }
+
+
+      @media screen and (min-width: 451px) {
+          div.widthAdjustment {
+              width: 450px;
+          }
+      }
+      @media screen and (max-width: 450px) {
+          div.widthAdjustment {
+              width: 95%;
+          }
+      }
+      .info {
+          text-align: center;
+          font-size: 11px;
+          padding-left: 15px;
+          padding-right: 15px;
+
+
+      }
+      .bootominfo {
+          margin-top: -11px;
+      }
+      .item1 {
+          font-family: "Avenir-Heavy";
+          color: black;
+          font-size: 13px;
+      }
+      #logo {
+          font-family: 'Girassol', cursive;
+          color: black;
+      }
+      .navbar-toggler {
+          outline: none;
+          border: none;
+      }
+      #googleSignInButton {
+          position: relative;
+          padding: 10px 40px;
+          text-align: center;
+          width: 100%;
+          height: 50px;
+          text-align: center;
+          background-color: #4285F5;
+          color: white;
+          font-family: 'Roboto';
+          border: none;
+          border-radius: 2px;
+
+      }
+      #facebookSignInButton {
+          position: relative;
+          padding: 10px 40px;
+          text-align: center;
+          width: 100%;
+          height: 50px;
+          text-align: center;
+          background-color: #3C5A9A;
+          color: white;
+          font-family: 'Roboto';
+          border: none;
+          border-radius: 2px;
+
+      }
+      .btnimg {
+        position: absolute;
+        left: 1px;
+        top: 50%;
+        transform: translateY(-50%);
+
+      }
+      .twitterlogo {
+          display:block;
+          margin:auto;
+      }
+      #skipButton {
+          font-family: "Avenir-Heavy";
+          color: gray;
+          font-size: 13px;
+          text-align:center;display:block;
+      }
+
+
+
+
+
+
+
+
+
+  </style>
+  <body>
+      <div class=”main-container”>
+
+          <section>
+              <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                  <div class="collapse navbar-collapse w-100 order-1 order-lg-0" id="navbarNav">
+
+                  </div>
+                  <div class="d-flex w-100 order-0">
+                      <div class="w-100">
+
+                      </div>
+                      <a id="logo" class="navbar-brand text-center w-100" href="HomePage.html">The Headline</a>
+                      <span class="w-100"></span>
+                  </div>
+                  <span class="w-100"></span>
+              </nav>
+
+              <img class="twitterlogo mt-5" src="assets/twitterlogo2.png" alt="tweer" width="30">
+
+              <div id="header" class="container-lg">
+                  <p id="signInLabel">Link your twitter</p>
+                  <p id="createAccountLabel">Have people chat about what you write</p>
+              </div>
+
+
+
+              <div class="container-lg mt-4 widthAdjustment">
+                  <hr>
+                  <form>
+                      <div class="form-group">
+                        <label class="formLabel" for="exampleInputEmail1">Twitter User Name</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">@</div>
+                          </div>
+                          <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="">
+                        </div>
+                      </div>
+
+
+                      <button id="submitBtn" onclick="update()" type="button" class="btn btn-dark btn-block" href="HomePage.html">Save</button>
+                  </form>
+
+                  <a id="skipButton" href="ReviewPage.html">Skip</a>
+
+              </div>
+
+
+
+
+          </section>
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-functions.js"></script>
+
+    <script src="configure.js"></script>
+    <script src="TwitterPage.js"></script>
+
+</body>
+
+
+</html>

@@ -38,6 +38,7 @@ postRef.where("status", "==", "NOTPOSTED").orderBy("time", "asc").limit(1)
                     .then(function(querySnapshot) {
                         querySnapshot.forEach(function(doc) {
                             console.log(author);
+                            document.getElementById("twitterbutton").href = "https://twitter.com/intent/tweet?screen_name=" + doc.data().username + "&ref_src=twsrc%5Etfw";
                             document.getElementById('postDetailText').innerText = "A Peak inside the mind of " + doc.data().username;
                             document.getElementById('author').innerText = "Written By: " + doc.data().username + "\n" + "Bio: " + doc.data().bio;
 
