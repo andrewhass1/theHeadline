@@ -109,7 +109,7 @@
             onApprove: function(data, actions) {
 
                 return actions.order.capture().then(function(details) {
-                    lvar db = firebase.firestore();
+                    var db = firebase.firestore();
                 firebase.auth().onAuthStateChanged(function(user) {
                   if (user) {
                       db.collection("posts").add({
