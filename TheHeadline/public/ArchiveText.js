@@ -63,11 +63,3 @@ postRef.where("title", "==", title).limit(1)
           });
 
     }
-
-    firebase.auth().onAuthStateChanged(function(user){
-        if (user) {
-          document.getElementById('navitem1').textContent = 'My Account';
-        } else{
-            console.log('not logged in');
-        }
-      });
