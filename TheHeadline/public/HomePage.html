@@ -8,6 +8,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Girassol&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
 
 </head>
@@ -200,12 +201,12 @@
     }
     .footerContainer1 {
         position: relative;
-        background-color: #F5F5F5;
+        background-color: #F6F8FA;
         height: 550px;
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 92%;
+        width: 100%;
     }
     #createItem1 {
         color: white !important;
@@ -252,26 +253,25 @@
     #getStarted {
         width: 100%;
         display: none;
+        background-color: #E0255E;
     }
     #letterbody {
-        font-family: 'Times';
+        font-family: 'Avenir';
         font-size: 18px;
         text-align: left;
 
     }
     .letterheader {
-        font-family: 'Times-Bold';
-        font-size: 18px;
+        font-family: 'Lato';
+        font-size: 25px;
         text-align: left;
+        font-weight: bold;
     }
-    .letterheader:first-child:first-letter {
-      float: left;
-      font-family: 'Times-Bold';
-      font-size: 110px;
-      line-height: 85px;
-      padding-top: 4px;
-      padding-right: 8px;
-      padding-left: 4px;
+    .messageAuthorText {
+        font-family: 'Lato';
+        font-size: 34px;
+        text-align: left;
+        font-weight: bold;
     }
 
 
@@ -331,6 +331,10 @@
     .ContinueBody {
         font-family: 'Avenir-medium';
         font-size: 18px;
+    }
+    .tweetContainer {
+        margin-bottom: 100px;
+        margin-top: 60px;
     }
 
 
@@ -454,8 +458,9 @@
       <p id="info">This piece will only be up for a limited time. If you wish to read it later, bookmark it or share it with friends and family. If you want to see your own article on the front page <a href="PostPage.html">create</a> one and post it.</p>
     </div>
 
-    <br>
-    <br>
+    <div id="break" class="container-lg mt-5 widthAdjustment">
+      <hr>
+    </div>
 
     <!--
     <div class="fixed-bottom alert alert-warning alert-warning alert-dismissible fade show position-sticky" role="alert">
@@ -466,10 +471,15 @@
     </div>
     -->
 
-    <div class="footerContainer1 mt-4 heightAdjustment">
+    <div class="container-lg widthAdjustment tweetContainer">
+        <p class="messageAuthorText">Have thoughts? Want to share your opinion on the topic. </p>
+        <a href="https://twitter.com/intent/tweet?screen_name=bob&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-size="large" data-show-count="false">Tweet to @hmacht</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+
+    <div class="footerContainer1 mt-5 heightAdjustment">
         <div class="center widthAdjustment">
             <div class="letter container">
-                <p class="letterheader">Thank you for the support. Our goal is to give people a platform where their voice is heard. We prioritize articles one at a time. We want you to focus on the current article or on creating your own.</p>
+                <p class="letterheader">From the Editors</p>
                 <p id="letterbody">Our articles are written passionate people who want to have their voice heard. Enjoy what people have to say. Discover articles that people write. They know that what they say will be herd, so they put their heart into every post. <br><br> Come back here to read our editor picks. Our editors will write about their favorite post. They change their pick every other day. Enjoy.</p>
                 <br>
                 <img src="assets/signature.png" alt="signature" width="130px" align="left">
@@ -482,7 +492,7 @@
 
     <footer id="footer">
 
-      <div class="footerContainer mt-5">
+      <div class="footerContainer">
           <p id="footItem1">This is the end of the page</p>
           <p id="footItem2">Still craving more articles? Dig through <a href="ArchivesPage.html" id="footerLink"><u>The Archives</u></a> or wait a few mins for the next post.</p>
 

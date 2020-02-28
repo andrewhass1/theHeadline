@@ -18,9 +18,11 @@ function login() {
 }
 
 function forgot() {
-  if(document.getElementById("email").value != '')
-{
-  var email = document.getElementById("email").value;
-  firebase.auth().sendPasswordResetEmail(email);
+    if(document.getElementById("email").value != '') {
+        var email = document.getElementById("email").value;
+        firebase.auth().sendPasswordResetEmail(email);
+        window.alert("Instructions on how to reset your password have been sent to " + document.getElementById("email").value);
+    } else {
+        window.alert("Enter your email in above First");
     }
 }
