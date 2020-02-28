@@ -1,6 +1,5 @@
 function update(){
   var userRef = db.collection("users");
-  var bio2 = document.getElementById('TwitterUN').value;
   firebase.auth().onAuthStateChanged(function(user){
     if(user) { //After successful login, user will be redirected to home.html
       userRef.where("id", "==", user.uid).limit(1)
