@@ -50,4 +50,5 @@ function handleRequest(request, response) {
 
   // 7. Return a successful response to the client
   return response.send(200);
+
 }
