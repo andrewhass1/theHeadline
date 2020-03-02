@@ -245,15 +245,16 @@
 
     <script>
 
-function googleSingIn() {
-    var provider = new firebase.auth.GoogleAuthProvider();
+    function googleSingIn() {
+        var provider = new firebase.auth.GoogleAuthProvider();
 
-    firebase.auth().signInWithRedirect(provider);
-}
+        firebase.auth().signInWithRedirect(provider);
+    }
+
     firebase.auth().onAuthStateChanged(function(user){
       if(user) {
         location.href = 'HomePage.html'; //After successful login, user will be redirected to home.html
-        
+
       } else{
 
       }
@@ -263,7 +264,7 @@ function googleSingIn() {
 
 
 
-  
+
 </body>
 
 

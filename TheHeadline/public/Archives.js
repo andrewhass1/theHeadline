@@ -1,7 +1,7 @@
 var db = firebase.firestore();
 function title(title){
     location.href = 'HomePage.html';
-}   
+}
     db.collection("posts").where("status", "==", "POSTED").orderBy("time", "desc").limit(50)
         .get()
         .then(function(querySnapshot) {
@@ -23,7 +23,7 @@ function title(title){
                 td1.textContent = month + '.' + day + '.' +year;
                 td3.innerText = doc.data().title;
                 var title = doc.data().title;
-                
+
 
                 var userRef = db.collection("users");
 
@@ -46,6 +46,7 @@ function title(title){
                         localStorage.setItem("author", td2.textContent)
                         location.href = 'ArchiveText.html';
                     };
+                    td3.id = 'titleLink'
 
                 tr.appendChild(td1);
                 tr.appendChild(td2);
