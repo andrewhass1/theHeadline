@@ -41,10 +41,11 @@ postRef.where("status", "==", "NOTPOSTED").orderBy("time", "asc").limit(1)
                             document.getElementById('postDetailText').innerText = "A Peak inside the mind of " + doc.data().username;
                             document.getElementById('author').innerText = "Written By: " + doc.data().username + "\n" + "Bio: " + doc.data().bio;
                             console.log("https://twitter.com/intent/tweet?screen_name=" + doc.data().twitterUN + "&ref_src=twsrc%5Etfw");
-                            if (doc.data().twitterUN == "@") {
+                            if (doc.data().twitterUN == "") {
                                 document.getElementById("messageAuthorText").innerHTML = "This author has no twitter linked. Still want to chat? Tweet at Team Headline."
                                 document.getElementById("twitterbutton").innerHTML = "Tweet to @theHeadline"
                             } else {
+                                document.getElementById("messageAuthorText").innerHTML = "Have thoughts? Share your opinon and ideas with the author."
                                 document.getElementById("twitterbutton").href = "https://twitter.com/intent/tweet?screen_name=" + doc.data().twitterUN + "&ref_src=twsrc%5Etfw";
                                 document.getElementById("twitterbutton").innerHTML = "Tweet to @" + doc.data().twitterUN;
                             }
