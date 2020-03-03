@@ -59,10 +59,6 @@
           text-align: center;
           margin-top: -15px;
       }
-      #forgetPwButton {
-          background-color: white;
-          border: none;
-      }
 
 
       @media screen and (min-width: 451px) {
@@ -199,9 +195,7 @@
               </div>
 
               <div class="container-lg w-50 mt-5">
-                  <p id="forgetPwLabel"><button id="forgetPwButton" onclick="forgot()" type="button"><u>Forgot account?</u></button></p>
-
-
+                  <p id="forgetPwLabel"><buttton id="new" onclick="forgot()" type="button">Forgot account?</button></p>
               </div>
 
 
@@ -255,13 +249,61 @@
         var provider = new firebase.auth.GoogleAuthProvider();
 
         firebase.auth().signInWithRedirect(provider);
+        function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
+    }
+
+    function onLoad() {
+      gapi.load('auth2', function() {
+        gapi.auth2.init();
+      });
+    }
+        if (auth2.isSignedIn.get()) {
+  var profile = auth2.currentUser.get().getBasicProfile();
+  console.log('ID: ' + profile.getId());
+  console.log('Full Name: ' + profile.getName());
+  console.log('Given Name: ' + profile.getGivenName());
+  console.log('Family Name: ' + profile.getFamilyName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail());
+}
+
     }
 
     firebase.auth().onAuthStateChanged(function(user){
-      if(user) {
-        location.href = 'HomePage.html'; //After successful login, user will be redirected to home.html
 
-      } else{
+      if(user) {
+        var db = firebase.firestore();
+       var userRef = db.collection("users")
+        userRef.where("id", "==", user.uid).limit(1)
+        .get()
+        .then(function(querySnapshot) {
+        if (querySnapshot.empty) {
+            location.href = 'HomePage.html';
+
+        } else {
+            querySnapshot.forEach(function(doc) {
+                db.collection("users").add({
+                username: locatStorage.getItem("userid"),
+                id: user.uid,
+                bio: "I am new to headline and want to share my beleifs, stories, and ideas.",
+                twitterUN: "Handle"
+
+            })
+            .then(function(docRef) {
+                console.log("Document written with ID: ", docRef.id);
+                location.href = 'HomePage.html';
+
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+            });
+        })}
+    })}
+        else{
 
       }
     });
@@ -270,7 +312,6 @@
         var provider = new firebase.auth.FacebookAuthProvider();
 
         firebase.auth().signInWithRedirect(provider);
-    }
 
     firebase.auth().onAuthStateChanged(function(user){
       if(user) {
@@ -280,9 +321,10 @@
 
       }
     });
+    }
     </script>
 
-
+<a href="#" onclick="signOut();">Sign out</a>
 
 
 </body>
