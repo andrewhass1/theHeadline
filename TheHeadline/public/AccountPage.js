@@ -100,3 +100,38 @@ function editbio() {
         }
       });
 }
+
+function editname() {
+
+    firebase.auth().onAuthStateChanged(function(user){
+        if (user) {
+      postRef.where("id", "==", user.uid).limit(1)
+          .get()
+          .then(function(querySnapshot) {
+              if (querySnapshot.empty) {
+                  document.getElementById('bio').innerText = ""
+                  document.getElementById('id').innerText = ""
+                  document.getElementById('username').innerText = ""
+
+              } else {
+                  querySnapshot.forEach(function(doc) {
+                      // doc.data() is never undefined for query doc snapshots
+                      console.log(doc.id, " => ", doc.data());
+                      localStorage.removeItem("name");
+                      localStorage.setItem("name", doc.data().username);
+                      location.href="editName.html"
+
+
+                  });
+              }
+
+          })
+          .catch(function(error) {
+              console.log("Error getting documents: ", error);
+          });
+        } else {
+            location.replace('singInPage.html');
+
+        }
+      });
+}
