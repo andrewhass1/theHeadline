@@ -3,7 +3,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="google-signin-8XjnX6UWszJcuMmMzTt256AF" content="776776851089-c83bth4e1veron4ftqdk0bl0f2dakt6l.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="776776851089-c83bth4e1veron4ftqdk0bl0f2dakt6l.apps.googleusercontent.com">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Girassol&display=swap" rel="stylesheet">
@@ -39,9 +40,10 @@
       }
 
       #submitBtn {
-          background-color: black;
+          background-color: #1C95E0;
           font-size: 14px;
           height: 40px;
+          border: none;
 
       }
 
@@ -130,6 +132,17 @@
         transform: translateY(-50%);
 
       }
+      .twitterlogo {
+          display:block;
+          margin:auto;
+      }
+      #skipButton {
+          font-family: "Avenir-Heavy";
+          color: gray;
+          font-size: 13px;
+          text-align:center;display:block;
+      }
+
 
 
 
@@ -157,58 +170,36 @@
                   <span class="w-100"></span>
               </nav>
 
-              <div id="header" class="container-lg mt-5">
-                  <p id="signInLabel">Sign in to your account</p>
-                  <p id="createAccountLabel">Don’t have a Headline account? <a href="CreateAccount.html">Create one</a></p>
+
+              <div id="header" class="container-lg">
+                  <p id="signInLabel">Enter Your Full Name</p>
+                  <p id="createAccountLabel">This is the Display Name</p>
               </div>
 
+
+
               <div class="container-lg mt-4 widthAdjustment">
-
-                  <button id="googleSignInButton" type="button" name="button" onclick="googleSingIn()" data-onsuccess="onSignIn">
-                      <img class="btnimg" src="assets/Google-Button.png" alt="GSI" height="48px"/>
-                      Continue with Google
-                  </button>
-
-
-
-                  <button class="mt-2" id="facebookSignInButton" type="button" name="button" onclick="facebookSingIn()">
-                      <img class="btnimg" src="assets/Facebook-Button.png" alt="GSI" height="48px"/>
-                      Continue with Facebook
-                  </button>
-
                   <hr>
-
-
                   <form>
                       <div class="form-group">
-                        <label class="formLabel" for="exampleInputEmail1">Email</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"\>
-                      </div>
-                      <div class="form-group">
-                        <label class="formLabel" for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="password">
+                        <label class="formLabel" for="exampleInputEmail1">Display Name</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                          </div>
+                          <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="">
+                        </div>
                       </div>
 
-                      <button id="submitBtn" onclick="login()" type="button" class="btn btn-dark btn-block" href="HomePage.html">Sign In</button>
+
+                      <button id="submitBtn" onclick="update()" type="button" class="btn btn-dark btn-block" href="HomePage.html">Save</button>
                   </form>
 
               </div>
 
-              <div class="container-lg w-50 mt-5">
-                  <p id="forgetPwLabel"><buttton id="new" onclick="forgot()" type="button">Forgot account?</button></p>
-              </div>
+
 
 
           </section>
-
-          <footer class="footerContainer mt-5">
-              <hr>
-              <p class="info" >This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
-              <p class="info bootominfo">© 2020 The Headline Company <a href="#">Privacy Policy</a> <a href="#">Help</a> <a href="#">Contact Us.</a></p>
-
-          </footer>
-
-
 
 
       </div>
@@ -238,72 +229,9 @@
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-functions.js"></script>
-    
-    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
     <script src="configure.js"></script>
-    <script src="signin1.js"></script>
-
-
-    
-
-    <script>
-
-    function googleSingIn() {
-        var provider = new firebase.auth.GoogleAuthProvider();
-
-        firebase.auth().signInWithRedirect(provider);
-
-    }
-
-    firebase.auth().onAuthStateChanged(function(user){
-      if(user) {
-        var db = firebase.firestore();
-        var userRef = db.collection("users")
-        userRef.where("id", "==", user.uid).limit(1)
-        .get()
-        .then(function(querySnapshot) {
-        if (querySnapshot.empty) {
-                db.collection("users").add({
-                username: "Anonymous",
-                id: user.uid,
-                bio: "I am new to headline and want to share my beleifs, stories, and ideas.",
-                twitterUN: "Handle"
-
-            })
-            .then(function(docRef) {
-                console.log("Document written with ID: ", docRef.id);
-                location.href = 'UpdateName.html';
-
-            })
-            .catch(function(error) {
-                console.error("Error adding document: ", error);
-            });
-
-        } else {
-            location.href = 'HomePage.html';
-}
-    })}
-        else{
-
-      }
-    });
-
-    function facebookSingIn() {
-        var provider = new firebase.auth.FacebookAuthProvider();
-
-        firebase.auth().signInWithRedirect(provider);
-
-    firebase.auth().onAuthStateChanged(function(user){
-      if(user) {
-        location.href = 'HomePage.html'; //After successful login, user will be redirected to home.html
-
-      } else{
-
-      }
-    });
-    }
-    </script>
-
+    <script src="UpdateName.js"></script>
 
 </body>
 
