@@ -15,9 +15,9 @@
         button:focus {outline:0;}
 
         #pitchText {
-            text-align: left;
-            font-size: 20px;
-            font-family: "Times";
+            text-align: center;
+            font-size: 26px;
+            font-family: "Avenir-Medium";
         }
         .button {
             outline: none;
@@ -38,9 +38,11 @@
             float: left;
         }
         #header {
-            font-family: 'Times';
-            font-size: 30px;
+            font-family: 'Avenir-Black';
+            font-size: 60px;
             font-weight: bold;
+            text-align: center;
+            line-height: 78px;
 
         }
         #logo {
@@ -49,15 +51,15 @@
 
         }
 
-        @media screen and (min-width: 621px) {
+        @media screen and (min-width: 701px) {
             div.widthAdjustment {
-                width: 620px;
+                width: 700px;
             }
             p.footItem2-0 {
                 font-size: 33px;
             }
         }
-        @media screen and (max-width: 620px) {
+        @media screen and (max-width: 700px) {
             div.widthAdjustment {
                 width: 95%;
             }
@@ -81,68 +83,23 @@
               background-repeat: no-repeat;
               background-size: cover;
         }
-        #logo2 {
-            color: white !important;
-            font-family: 'Girassol', cursive;
-            font-size: 22px;
-            padding-left: -10px;
+        .HorizontalCenter {
+            text-align:center;
+            position: absolute;
+            margin-top: 20px;
+            left: 50%;
+            transform: translate(-50%,-50%);
         }
-
-        .navbar-custom {
-            background-color: #191919;
+        .center {
+            text-align:center;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%,-50%);
         }
-        #footer {
-            background-color: #191919;
-            height: 230px;
+        #joinlink {
+            font-size: 19px;
         }
-        #item3 {
-            font-family: "Avenir-Medium";
-            color: white;
-            font-size: 14px;
-        }
-        .footerContainer {
-            padding-left: 35px;
-            padding-right: 35px;
-        }
-        .footerContainer2 {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-        #footItem1 {
-            padding-top: 40px;
-            color: white;
-            font-size: 18px;
-            font-family: "Avenir-Black";
-        }
-        #footItem2 {
-            color: white;
-            font-size: 14px;
-            font-family: "Avenir-Heavy";
-            margin-top: -10px;
-        }
-        #break2 {
-            background-color: white !important;
-            color: white !important;
-        }
-        .footerContainer0 {
-            background-color: #FFF1EA;
-            height: 280px;
-            padding-left: 35px;
-            padding-right: 35px;
-        }
-        .footItem1-0 {
-            padding-top: 60px;
-            color: black;
-            font-size: 25px;
-            font-family: "Avenir-Black";
-        }
-        .footItem2-0 {
-            color: black;
-            font-size: 33px;
-            font-family: "Avenir-Medium";
-            margin-top: -10px;
-        }
-
+        
 
 
 
@@ -161,17 +118,28 @@
 
 
         <div class="main">
-            <div id="pitchcontainer" class="container-lg widthAdjustment">
-                <p id="pitchText"><span id="logo">The Headline</span> <br> <span id="header">Join and let the world hear you.</span> <br> You write it and we will show it to the world. Post something and it will be on the front page for 5 mins. Everybody will read what you have to say - Finally.
-</p>
-                <button class="button" type="button" name="button" onclick="getStarted()">Join right now for free</button>
+            <div class="container-lg widthAdjustment center">
+                <p id="pitchText"><span id="header">Let the world hear you.</span> <br> You write it and we will show it to the world. Post something and it will be on the front page for 5 mins. Everybody will read what you have to say - Finally.</p>
+                <div class="HorizontalCenter">
+                    <a id="joinlink" href="CreateAccount.html">Join today for free</a>
+                </div>
+
+
             </div>
         </div>
+
+
+        <!--
+
+        <button class="button" type="button" name="button" onclick="getStarted()">Join right now for free</button>
 
         <div class="footerContainer0">
             <p class="footItem1-0">About the Headline</p>
             <p class="footItem2-0">We believe that everyone voice should be heard. Post something and you won’t be scrolled over. </p>
         </div>
+
+
+
 
 
 
@@ -200,6 +168,8 @@
                 </ul>
               </nav>
           </div>
+
+           -->
 
 
 
