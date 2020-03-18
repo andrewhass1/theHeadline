@@ -24,13 +24,8 @@ postRef.where("status", "==", "NOTPOSTED").orderBy("time", "asc").limit(1)
             querySnapshot.forEach(function(doc) {
                 document.getElementById('aText').innerText = doc.data().content;
                 document.getElementById('aTitle').innerText = doc.data().title;
-
-
+                localStorage.setItem("id", doc.id);
                 var author = doc.data().user;
-
-                postRef.doc(doc.id).update({
-                    status: "POSTED"
-                });
 
                 var userRef = db.collection("users");
 
@@ -65,18 +60,39 @@ postRef.where("status", "==", "NOTPOSTED").orderBy("time", "asc").limit(1)
 
 
 
+                    setTimeout(function () {
+                        var id1 = localStorage.getItem("id");
+                        localStorage.setItem("doc", doc.id)
+                        postRef.where("id", "==", id1).where("status", "==", "NOTPOSTED").limit(1)
+                        .get()
+                        .then(function(querySnapshot) {
+                            if (querySnapshot.empty) {
+                                console.log("post");
+                                location.replace("HomePage.html");
+                            } else {
+                                console.log("no post")
+                        postRef.doc(doc.id).update({
+                            status: "POSTED"
+                        })
 
-            });
-        }
-
+                        alert('Post finished');
+                        postRef.where("id", "==", id1).where("status", "==", "NOTPOSTED").limit(1)
+                        .get()
+                        .then(function() {
+                            location.replace("HomePage.html");
+                        })
+                        .catch(function(error) {
+                            console.log("Error getting documents: ", error);
+                        })
+                }
+            }
+            ).catch(function(error) {
+                console.log("Error getting documents: ", error);
+            })
+        },10750);
     })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
-
-
-
-
+}
+    })
 
     function navButton() {
         firebase.auth().onAuthStateChanged(function(user){
