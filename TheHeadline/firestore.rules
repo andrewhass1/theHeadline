@@ -13,6 +13,7 @@ service cloud.firestore {
     match /posts/{posts} {
       allow read;
       allow create: if request.auth.uid != null;
+      allow update;
     }
     
     match /users/{users}{
