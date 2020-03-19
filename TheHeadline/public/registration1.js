@@ -27,7 +27,7 @@ function register() {
             db.collection("users").add({
                 username: usersName,
                 id: user.uid,
-                bio: "I am new to headline and want to share my beleifs, stories, and ideas.",
+                bio: "I am new to headline and want to share my beliefs, stories, and ideas.",
                 twitterUN: "Handle"
 
             })
