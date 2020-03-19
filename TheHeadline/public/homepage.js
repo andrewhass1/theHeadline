@@ -88,7 +88,7 @@ postRef.where("status", "==", "NOTPOSTED").orderBy("time", "asc").limit(1)
     }
 
     function continueReading() {
-        location.replace("HomePage.html");
+        location.replace("ArchiveText.html");
     }
 
     function navButton() {
