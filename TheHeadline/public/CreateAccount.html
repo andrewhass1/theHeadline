@@ -183,12 +183,6 @@
           </button>
 
 
-
-          <button class="mt-2" id="facebookSignInButton" type="button" name="button" onclick="facebookSingIn()">
-              <img class="btnimg" src="assets/Facebook-Button.png" alt="GSI" height="48px"/>
-              Continue with Facebook
-          </button>
-
           <hr>
 
           <form>
@@ -298,21 +292,6 @@
     
           }
         });
-    
-        function facebookSingIn() {
-            var provider = new firebase.auth.FacebookAuthProvider();
-    
-            firebase.auth().signInWithRedirect(provider);
-    
-        firebase.auth().onAuthStateChanged(function(user){
-          if(user) {
-            location.href = 'HomePage.html'; //After successful login, user will be redirected to home.html
-    
-          } else{
-    
-          }
-        });
-        }
         </script>
 
   </body>
