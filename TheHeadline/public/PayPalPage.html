@@ -145,13 +145,21 @@
                           content: localStorage.getItem('content'),
                           user: user.uid,
                           time: firebase.firestore.FieldValue.serverTimestamp(),
-                          status: "NOTPOSTED"
+                          status: "NOTPOSTED",
+                          id: "blank"
                       })
                       .then(function(docRef) {
+                        db.collection("posts").doc(docRef.id).update({
+                            id: docRef.id
+                        })
+                        var postRef = db.collection("posts");
+                        postRef.where("id", "==", docRef.id).where("status", "==", "NOTPOSTED").limit(1)
                           console.log("Document written with ID: ", docRef.id);
-                          location.href = 'TwitterPage.html';
+                        var userRef = db.collection("users");
+
                           localStorage.setItem("control", '1null123');
-                      })
+                          location.href = 'TwitterPage.html';
+                    })
                       .catch(function(error) {
                           console.error("Error adding document: ", error);
                       });

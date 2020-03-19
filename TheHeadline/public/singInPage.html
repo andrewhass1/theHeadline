@@ -286,23 +286,36 @@
 
       }
     });
-
-    function facebookSingIn() {
-        var provider = new firebase.auth.FacebookAuthProvider();
-
-        firebase.auth().signInWithRedirect(provider);
-
-    firebase.auth().onAuthStateChanged(function(user){
-      if(user) {
-        location.href = 'HomePage.html'; //After successful login, user will be redirected to home.html
-
-      } else{
-
-      }
-    });
-    }
     </script>
-
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '881775542280384',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v6.0'
+    });
+  };
+  function facebookSingIn(){
+  FB.login(function(response) {
+    if (response.authResponse) {
+     console.log('Welcome!  Fetching your information.... ');
+     FB.api('/me', function(response) {
+       console.log('Good to see you, ' + response.name + '.');
+     });
+    } else {
+     console.log('User cancelled login or did not fully authorize.');
+    }
+})}
+var finished_rendering = function() {
+  console.log("finished rendering plugins");
+  var spinner = document.getElementById("spinner");
+  spinner.removeAttribute("style");
+  spinner.removeChild(spinner.childNodes[0]);
+}
+FB.Event.subscribe('xfbml.render', finished_rendering);
+</script>
+<script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
 
 </body>
 
