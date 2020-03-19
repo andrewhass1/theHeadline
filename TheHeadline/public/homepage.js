@@ -45,19 +45,12 @@ postRef.where("status", "==", "NOTPOSTED").orderBy("time", "asc").limit(1)
                                 document.getElementById("twitterbutton").innerHTML = "Tweet to @" + doc.data().twitterUN;
                             }
 
-
-
-
-
-
                         });
 
                     })
                     .catch(function(error) {
                         console.log("Error getting documents: ", error);
                     });
-
-
 
 
                     setTimeout(function () {
@@ -75,15 +68,10 @@ postRef.where("status", "==", "NOTPOSTED").orderBy("time", "asc").limit(1)
                             status: "POSTED"
                         })
 
-                        alert('Post finished');
-                        postRef.where("id", "==", id1).where("status", "==", "NOTPOSTED").limit(1)
-                        .get()
-                        .then(function() {
-                            location.replace("HomePage.html");
-                        })
-                        .catch(function(error) {
-                            console.log("Error getting documents: ", error);
-                        })
+
+                        document.getElementById('postdone').style.display = "block";
+
+
                 }
             }
             ).catch(function(error) {
@@ -93,6 +81,14 @@ postRef.where("status", "==", "NOTPOSTED").orderBy("time", "asc").limit(1)
     })
 }
     })
+
+    function nextPost() {
+        location.replace("HomePage.html");
+    }
+
+    function continueReading() {
+        location.replace("HomePage.html");
+    }
 
     function navButton() {
         firebase.auth().onAuthStateChanged(function(user){
