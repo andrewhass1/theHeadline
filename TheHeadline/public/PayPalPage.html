@@ -154,8 +154,22 @@
                         })
                         var postRef = db.collection("posts");
                         postRef.where("id", "==", docRef.id).where("status", "==", "NOTPOSTED").limit(1)
-                          console.log("Document written with ID: ", docRef.id);
-                        var userRef = db.collection("users");
+                        .get()
+                    .then(function(querySnapshot) {
+                        querySnapshot.forEach(function(doc) {
+      
+                            if (querySnapshot.empty) {
+                              db.collection("posts").doc(docRef.id).update({
+                            id: docRef.id
+                        })
+                            } else {
+                              localStorage.setItem("control", '1null123');
+                          location.href = 'TwitterPage.html';
+                            }
+
+                        });
+
+                    })
 
                           localStorage.setItem("control", '1null123');
                           location.href = 'TwitterPage.html';
