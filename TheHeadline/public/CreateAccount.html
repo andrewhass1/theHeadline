@@ -217,7 +217,7 @@
       <div class="footerContainer mt-5">
           <hr>
           <p class="info" >This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
-          <p class="info bootominfo">© 2020 The Headline Company <a href="#">Privacy Policy</a> <a href="#">Help</a> <a href="#">Contact Us.</a></p>
+          <p class="info bootominfo">© 2020 The Headline Company <a href="PrivatePolicy.html">Privacy Policy</a> <a href="#">Help</a> <a href="#">Contact Us.</a></p>
       </div>
 
 
@@ -255,11 +255,11 @@
 
         function googleSingIn() {
             var provider = new firebase.auth.GoogleAuthProvider();
-    
+
             firebase.auth().signInWithRedirect(provider);
-    
+
         }
-    
+
         firebase.auth().onAuthStateChanged(function(user){
           if(user) {
             var db = firebase.firestore();
@@ -273,23 +273,23 @@
                     id: user.uid,
                     bio: "I am new to headline and want to share my beliefs, stories, and ideas.",
                     twitterUN: "Handle"
-    
+
                 })
                 .then(function(docRef) {
                     console.log("Document written with ID: ", docRef.id);
                     location.href = 'UpdateName.html';
-    
+
                 })
                 .catch(function(error) {
                     console.error("Error adding document: ", error);
                 });
-    
+
             } else {
                 location.href = 'HomePage.html';
     }
         })}
             else{
-    
+
           }
         });
         </script>
