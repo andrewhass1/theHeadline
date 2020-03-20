@@ -79,7 +79,7 @@ postRef.where("status", "==", "NOTPOSTED").orderBy("time", "asc").limit(1)
             ).catch(function(error) {
                 console.log("Error getting documents: ", error);
             })
-        },10750);
+        },120750);
     })
 }
     })

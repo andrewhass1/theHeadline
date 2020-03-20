@@ -1,54 +1,88 @@
 // Note: This code is intended as a *pseudocode* example. Each server platform and programming language has a different way of handling requests, making HTTP API calls, and serving responses to the browser.
 
 // 1. Set up your server to make calls to PayPal
-
-// 1a. Add your client ID and secret
-PAYPAL_CLIENT = 'AW0Y-uNo-RoIcxUSeO4mHY9TlGtzvyDEOr7LTtN1hKCX0opeV0SEYYtZwZq5EsFoN9rWPr9iYL005wJI';
-PAYPAL_SECRET = 'ENza-oWdeE9FVW0Alr2MJxc3FH5VPBCKJHzp0-5y2e2_b5DdClLq960zUmxqu2itgNCS4EKGdbKt5EXp';
-
-// 1b. Point your server to the PayPal API
-PAYPAL_OAUTH_API = 'https://api.sandbox.paypal.com/v1/oauth2/token/';
-PAYPAL_ORDER_API = 'https://api.sandbox.paypal.com/v2/checkout/orders/';
-
-// 1c. Get an access token from the PayPal API
-basicAuth = base64encode(`${ PAYPAL_CLIENT }:${ PAYPAL_SECRET }`);
-auth = http.post(PAYPAL_OAUTH_API, {
-  headers: {
-    Accept:        `application/json`,
-    Authorization: `Basic ${ basicAuth }`
-  },
-  data: `grant_type=client_credentials`
+var gateway = braintree.connect({
+  accessToken: access_token$production$hfzckvxjc5q429kp$a82e2b1ab984954835e4e57d365dd6c8
 });
 
-// 2. Set up your server to receive a call from the client
-function handleRequest(request, response) {
-
-  // 2a. Get the order ID from the request body
-  orderID = request.body.orderID;
-
-  // 3. Call PayPal to get the transaction details
-  details = http.get(PAYPAL_ORDER_API + orderID, {
-    headers: {
-      Accept:        `application/json`,
-      Authorization: `Bearer ${ auth.access_token }`
-    }
+app.get("/client_token", function (req, res) {
+  gateway.clientToken.generate({}, function (err, response) {
+    res.send(response.clientToken);
   });
+});
 
-  // 4. Handle any errors from the call
-  if (details.error) {
-    return response.send(500);
+app.post("/checkout", function (req, res) {
+  var nonce = req.body.payment_method_nonce;
+  // Use payment method nonce here
+});
+
+var saleRequest = {
+  amount: req.body.amount,
+  merchantAccountId: "USD",
+  paymentMethodNonce: req.body.nonce,
+  orderId: "Mapped to PayPal Invoice Number",
+  descriptor: {
+    name: "Descriptor displayed in customer CC statements. 22 char max"
+  },
+  options: {
+    paypal: {
+      customField: "PayPal custom field",
+      description: "Description for PayPal email receipt"
+    },
+    submitForSettlement: true
   }
+};
 
-  // 5. Validate the transaction details are as expected
-  if (details.purchase_units[0].amount.value !== '1.00') {
-    return response.send(400);
+gateway.transaction.sale(saleRequest, function (err, result) {
+  if (err) {
+    res.send("<h1>Error:  " + err + "</h1>");
+  } else if (result.success) {
+    res.send("<h1>Success! Transaction ID: " + result.transaction.id + "</h1>");
+    var db = firebase.firestore();
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+          db.collection("posts").add({
+              title: localStorage.getItem('title'),
+              content: localStorage.getItem('content'),
+              user: user.uid,
+              time: firebase.firestore.FieldValue.serverTimestamp(),
+              status: "NOTPOSTED",
+              id: "blank"
+          })
+          .then(function(docRef) {
+            db.collection("posts").doc(docRef.id).update({
+                id: docRef.id
+            })
+            var postRef = db.collection("posts");
+            postRef.where("id", "==", docRef.id).where("status", "==", "NOTPOSTED").limit(1)
+            .get()
+        .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+
+                if (querySnapshot.empty) {
+                  db.collection("posts").doc(docRef.id).update({
+                id: docRef.id
+            })
+                } else {
+                  localStorage.setItem("control", '1null123');
+              location.href = 'TwitterPage.html';
+                }
+
+            });
+
+        })
+
+              localStorage.setItem("control", '1null123');
+              location.href = 'TwitterPage.html';
+        })
+          .catch(function(error) {
+              console.error("Error adding document: ", error);
+          });
+      } else {
+        location.replace('singInPage.html');
+      }
+    });
+  } else {
+    res.send("<h1>Error:  " + result.message + "</h1>");
   }
-
-  // 6. Save the transaction in your database
-  database.saveTransaction(orderID);
-
-
-  // 7. Return a successful response to the client
-  return response.send(200);
-
-}
+});
