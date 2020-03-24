@@ -1,88 +1,105 @@
-// Note: This code is intended as a *pseudocode* example. Each server platform and programming language has a different way of handling requests, making HTTP API calls, and serving responses to the browser.
 
-// 1. Set up your server to make calls to PayPal
-var gateway = braintree.connect({
-  accessToken: access_token$production$hfzckvxjc5q429kp$a82e2b1ab984954835e4e57d365dd6c8
-});
-
-app.get("/client_token", function (req, res) {
-  gateway.clientToken.generate({}, function (err, response) {
-    res.send(response.clientToken);
-  });
-});
-
-app.post("/checkout", function (req, res) {
-  var nonce = req.body.payment_method_nonce;
-  // Use payment method nonce here
-});
-
-var saleRequest = {
-  amount: req.body.amount,
-  merchantAccountId: "USD",
-  paymentMethodNonce: req.body.nonce,
-  orderId: "Mapped to PayPal Invoice Number",
-  descriptor: {
-    name: "Descriptor displayed in customer CC statements. 22 char max"
-  },
-  options: {
-    paypal: {
-      customField: "PayPal custom field",
-      description: "Description for PayPal email receipt"
-    },
-    submitForSettlement: true
-  }
-};
-
-gateway.transaction.sale(saleRequest, function (err, result) {
-  if (err) {
-    res.send("<h1>Error:  " + err + "</h1>");
-  } else if (result.success) {
-    res.send("<h1>Success! Transaction ID: " + result.transaction.id + "</h1>");
-    var db = firebase.firestore();
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-          db.collection("posts").add({
-              title: localStorage.getItem('title'),
-              content: localStorage.getItem('content'),
-              user: user.uid,
-              time: firebase.firestore.FieldValue.serverTimestamp(),
-              status: "NOTPOSTED",
-              id: "blank"
-          })
-          .then(function(docRef) {
-            db.collection("posts").doc(docRef.id).update({
-                id: docRef.id
-            })
-            var postRef = db.collection("posts");
-            postRef.where("id", "==", docRef.id).where("status", "==", "NOTPOSTED").limit(1)
-            .get()
-        .then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
-
-                if (querySnapshot.empty) {
-                  db.collection("posts").doc(docRef.id).update({
-                id: docRef.id
-            })
-                } else {
-                  localStorage.setItem("control", '1null123');
-              location.href = 'TwitterPage.html';
-                }
-
-            });
-
-        })
-
-              localStorage.setItem("control", '1null123');
-              location.href = 'TwitterPage.html';
-        })
-          .catch(function(error) {
-              console.error("Error adding document: ", error);
-          });
-      } else {
-        location.replace('singInPage.html');
+// Add your credentials:
+// Add your client ID and secret
+var CLIENT =
+  'AeS3Ae0i5WXnmcvMR24V95n4OVKAY_5q9idrJFZN9rkkyTlxCiuR1uez3AoliaCYwqS1C-BNFIRnsWfN';
+var SECRET =
+  'ELW4d9K-qqSLyNcgfvLz6NRPxaJRnr5_fZyH63n5krrNCIUrboJaoCZUH86D3EJkDMq-OoHLO8sJaxOz';
+  var PAYPAL_ORDER_API = 'https://api.paypal.com/v2/checkout/orders/';
+express()
+  // Set up the payment:
+  // 1. Set up a URL to handle requests from the PayPal button
+  .post('/my-api/create-payment/', function(req, res)
+  {
+    // 2. Call /v1/payments/payment to set up the payment
+    request.post(PAYPAL_API + '/v1/payments/payment',
+    {
+      auth:
+      {
+        user: CLIENT,
+        pass: SECRET
+      },
+      body:
+      {
+        intent: 'sale',
+        payer:
+        {
+          payment_method: 'paypal'
+        },
+        transactions: [
+        {
+          amount:
+          {
+            total: '1.00',
+            currency: 'USD'
+          }
+        }],
+        redirect_urls:
+        {
+          return_url: 'https://the-headline.com/HomePage.html',
+          cancel_url: 'https://the-headline.com/HomePage.html'
+        }
+      },
+      json: true
+    }, function(err, response)
+    {
+      if (err)
+      {
+        console.error(err);
+        return res.sendStatus(500);
       }
+      // 3. Return the payment ID to the client
+      res.json(
+      {
+        id: response.body.id
+      });
     });
-  } else {
-    res.send("<h1>Error:  " + result.message + "</h1>");
-  }
-});
+  })
+  // Execute the payment:
+  // 1. Set up a URL to handle requests from the PayPal button.
+  .post('/my-api/execute-payment/', function(req, res)
+  {
+    // 2. Get the payment ID and the payer ID from the request body.
+    var paymentID = req.body.paymentID;
+    var payerID = req.body.payerID;
+    // 3. Call /v1/payments/payment/PAY-XXX/execute to finalize the payment.
+    request.post(PAYPAL_API + '/v1/payments/payment/' + paymentID +
+      '/execute',
+      {
+        auth:
+        {
+          user: CLIENT,
+          pass: SECRET
+        },
+        body:
+        {
+          payer_id: payerID,
+          transactions: [
+          {
+            amount:
+            {
+              total: '1.00',
+              currency: 'USD'
+            }
+          }]
+        },
+        json: true
+      },
+      function(err, response)
+      {
+        if (err)
+        {
+          console.error(err);
+          return res.sendStatus(500);
+        }
+        // 4. Return a success response to the client
+        res.json(
+        {
+          status: 'success'
+        });
+      });
+  }).listen(5000, function()
+  {
+    console.log('Server listening at http://localhost:5000/');
+  });
+// Run `node ./server.js` in your terminal

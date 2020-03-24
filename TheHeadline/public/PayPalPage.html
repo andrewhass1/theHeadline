@@ -105,40 +105,81 @@
             </div>
 
 
-      <!-- Load the required checkout.js script -->
-<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
 
 <!-- Load the required Braintree components. -->
 <script src="https://js.braintreegateway.com/web/3.39.0/js/client.min.js"></script>
 <script src="https://js.braintreegateway.com/web/3.39.0/js/paypal-checkout.min.js"></script>
+<body>
+    <script
+      src="https://www.paypal.com/sdk/js?client-id=AeS3Ae0i5WXnmcvMR24V95n4OVKAY_5q9idrJFZN9rkkyTlxCiuR1uez3AoliaCYwqS1C-BNFIRnsWfN"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+    </script>
+  </body>
+<script>
+    paypal.Buttons({
+    createOrder: function(data, actions) {
+      // This function sets up the details of the transaction, including the amount and line item details.
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '1.00'
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      // This function captures the funds from the transaction.
+      return actions.order.capture().then(function(details) {
+        // This function shows a transaction success message to your buyer.
+        var db = firebase.firestore();
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+          db.collection("posts").add({
+              title: localStorage.getItem('title'),
+              content: localStorage.getItem('content'),
+              user: user.uid,
+              time: firebase.firestore.FieldValue.serverTimestamp(),
+              status: "NOTPOSTED",
+              id: "blank"
+          })
+          .then(function(docRef) {
+            db.collection("posts").doc(docRef.id).update({
+                id: docRef.id
+            })
+            var postRef = db.collection("posts");
+            postRef.where("id", "==", docRef.id).where("status", "==", "NOTPOSTED").limit(1)
+            .get()
+        .then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
 
+                if (querySnapshot.empty) {
+                  db.collection("posts").doc(docRef.id).update({
+                id: docRef.id
+            })
+                } else {
+                  localStorage.setItem("control", '1null123');
+              location.href = 'TwitterPage.html';
+                }
 
-        <script>
-          paypal.Button.render({
-  braintree: braintree,
-  client: {
-    production: 'CLIENT_TOKEN_FROM_SERVER',
-    sandbox: 'CLIENT_TOKEN_FROM_SERVER'
-  },
-  env: 'production', // Or 'sandbox'
-  commit: true, // This will add the transaction amount to the PayPal button
+            });
 
-  payment: function (data, actions) {
-    return actions.braintree.create({
-      flow: 'checkout', // Required
-      amount: 1.00, // Required
-      currency: 'USD', // Required
-      enableShippingAddress: false,
-      shippingAddressEditable: false
+        })
+
+              localStorage.setItem("control", '1null123');
+              location.href = 'TwitterPage.html';
+        })
+          .catch(function(error) {
+              console.error("Error adding document: ", error);
+          });
+      } else {
+        location.replace('singInPage.html');
+      }
     });
-  },
-
-  onAuthorize: function (payload) {
-    // Submit `payload.nonce` to your server.
-  },
-}, '#paypal-button-container');
-
-        </script>
+      });
+    }
+  }).render('#paypal-button-container');
+  //This function displays Smart Payment Buttons on your web page.
+    
+  </script>
 
 
 
