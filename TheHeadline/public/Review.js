@@ -6,8 +6,7 @@ firebase.auth().onAuthStateChanged(function(user) {
    if (user) {
       postRef.where("status", "==", "NOTPOSTED").get().then(snap => {
          size = snap.size // will return the collection size
-         yourTime = size * 5;
-         console.log(yourTime);
+         yourTime = (size * 2) - 2;
          document.getElementById('body').innerText = "It will be on the front page in about " + yourTime + " mins";
       });
    } else {

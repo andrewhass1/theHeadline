@@ -258,6 +258,9 @@
 
             firebase.auth().signInWithRedirect(provider);
 
+            var loadingCover = document.getElementById("whiteout");
+            loadingCover.style.display = "flex";
+
         }
 
         firebase.auth().onAuthStateChanged(function(user){

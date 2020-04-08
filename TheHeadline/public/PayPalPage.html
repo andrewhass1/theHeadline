@@ -131,45 +131,45 @@
       return actions.order.capture().then(function(details) {
         // This function shows a transaction success message to your buyer.
         var db = firebase.firestore();
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-          db.collection("posts").add({
-              title: localStorage.getItem('title'),
-              content: localStorage.getItem('content'),
-              user: user.uid,
-              time: firebase.firestore.FieldValue.serverTimestamp(),
-              status: "NOTPOSTED",
-              id: "blank"
-          })
-          .then(function(docRef) {
-            db.collection("posts").doc(docRef.id).update({
-                id: docRef.id
-            })
-            var postRef = db.collection("posts");
-            postRef.where("id", "==", docRef.id).where("status", "==", "NOTPOSTED").limit(1)
-            .get()
-        .then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+              db.collection("posts").add({
+                  title: localStorage.getItem('title'),
+                  content: localStorage.getItem('content'),
+                  user: user.uid,
+                  time: firebase.firestore.FieldValue.serverTimestamp(),
+                  status: "NOTPOSTED",
+                  id: "blank"
+              })
+              .then(function(docRef) {
+                db.collection("posts").doc(docRef.id).update({
+                    id: docRef.id
+                })
+                var postRef = db.collection("posts");
+                postRef.where("id", "==", docRef.id).where("status", "==", "NOTPOSTED").limit(1)
+                .get()
+                .then(function(querySnapshot) {
+                    querySnapshot.forEach(function(doc) {
 
-                if (querySnapshot.empty) {
-                  db.collection("posts").doc(docRef.id).update({
-                id: docRef.id
-            })
-                } else {
-                  localStorage.setItem("control", '1null123');
-              location.href = 'TwitterPage.html';
-                }
+                        if (querySnapshot.empty) {
+                          db.collection("posts").doc(docRef.id).update({
+                        id: docRef.id
+                    })
+                        } else {
+                          localStorage.setItem("control", '1null123');
+                      location.href = 'TwitterPage.html';
+                        }
 
-            });
+                    });
 
-        })
+                })
 
-              localStorage.setItem("control", '1null123');
-              location.href = 'TwitterPage.html';
-        })
-          .catch(function(error) {
-              console.error("Error adding document: ", error);
-          });
+                      localStorage.setItem("control", '1null123');
+                      location.href = 'TwitterPage.html';
+                })
+                  .catch(function(error) {
+                      console.error("Error adding document: ", error);
+                  });
       } else {
         location.replace('singInPage.html');
       }
@@ -178,7 +178,7 @@
     }
   }).render('#paypal-button-container');
   //This function displays Smart Payment Buttons on your web page.
-    
+
   </script>
 
 

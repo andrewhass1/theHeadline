@@ -6,19 +6,50 @@ function publish() {
     }
     else
     {
-        var db = firebase.firestore();
-        firebase.auth().onAuthStateChanged(function(user) {
+          var db = firebase.firestore();
+          firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
-                var theTitle = document.getElementById('title').value;
-                var theContent = document.getElementById('content').value;
-                localStorage.setItem("title", theTitle);
-                localStorage.setItem("content", theContent);
-                localStorage.setItem("control", "confirm");
-                location.href = 'PayPalPage.html';
-            } else {
-              location.replace('HomePage.html');
-            }
-          });
+                db.collection("posts").add({
+                    title: document.getElementById('title').value,
+                    content: document.getElementById('content').value,
+                    user: user.uid,
+                    time: firebase.firestore.FieldValue.serverTimestamp(),
+                    status: "NOTPOSTED",
+                    id: "blank"
+                })
+                .then(function(docRef) {
+                  db.collection("posts").doc(docRef.id).update({
+                      id: docRef.id
+                  })
+                  var postRef = db.collection("posts");
+                  postRef.where("id", "==", docRef.id).where("status", "==", "NOTPOSTED").limit(1)
+                  .get()
+                  .then(function(querySnapshot) {
+                      querySnapshot.forEach(function(doc) {
+
+                          if (querySnapshot.empty) {
+                            db.collection("posts").doc(docRef.id).update({
+                          id: docRef.id
+                      })
+                          } else {
+                            localStorage.setItem("control", '1null123');
+                        location.href = 'TwitterPage.html';
+                          }
+
+                      });
+
+                  })
+
+                        localStorage.setItem("control", '1null123');
+                        location.href = 'TwitterPage.html';
+                  })
+                    .catch(function(error) {
+                        console.error("Error adding document: ", error);
+                    });
+        } else {
+          location.replace('singInPage.html');
+        }
+      });
     }
 
 }
