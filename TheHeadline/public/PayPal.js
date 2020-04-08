@@ -56,25 +56,25 @@ gateway.transaction.sale(saleRequest, function (err, result) {
             var postRef = db.collection("posts");
             postRef.where("id", "==", docRef.id).where("status", "==", "NOTPOSTED").limit(1)
             .get()
-        .then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
+            .then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
 
-                if (querySnapshot.empty) {
-                  db.collection("posts").doc(docRef.id).update({
-                id: docRef.id
+                    if (querySnapshot.empty) {
+                      db.collection("posts").doc(docRef.id).update({
+                    id: docRef.id
+                })
+                    } else {
+                      localStorage.setItem("control", '1null123');
+                  location.href = 'TwitterPage.html';
+                    }
+
+                });
+
             })
-                } else {
+
                   localStorage.setItem("control", '1null123');
-              location.href = 'TwitterPage.html';
-                }
-
-            });
-
-        })
-
-              localStorage.setItem("control", '1null123');
-              location.href = 'TwitterPage.html';
-        })
+                  location.href = 'TwitterPage.html';
+            })
           .catch(function(error) {
               console.error("Error adding document: ", error);
           });
